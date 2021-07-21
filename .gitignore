@@ -1,0 +1,4 @@
+/build-storybook.log
+/dist/
+/.cache/
+/.storybook/

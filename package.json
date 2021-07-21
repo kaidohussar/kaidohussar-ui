@@ -16,7 +16,7 @@
     "release": "release-it",
     "check:codestyle:js": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "check:codestyle:scss": "stylelint \"src/**/*.scss\"",
-    "publish-chromatic": "npx chromatic --project-token=461726485ea2"
+    "chromatic": "npx chromatic --project-token=461726485ea2"
   },
   "repository": {
     "type": "git",
