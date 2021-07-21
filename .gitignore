@@ -2,3 +2,5 @@
 /dist/
 /.cache/
 /.storybook/
+/yarn-error.log
+.env

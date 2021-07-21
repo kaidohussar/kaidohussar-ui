@@ -1,8 +1,8 @@
 {
-  "name": "ui-library",
+  "name": "@kaidohussar/ui",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "UI library by Kaido Hussar",
+  "main": "dist/index.js",
   "scripts": {
     "analyze": "source-map-explorer 'lib/index.js'",
     "build-storybook": "build-storybook -s public",
@@ -15,12 +15,20 @@
     "typecheck": "tsc --noEmit",
     "release": "release-it",
     "check:codestyle:js": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
-    "chromatic": "npx chromatic --project-token=461726485ea2"
+    "chromatic": "npx chromatic --project-token=461726485ea2",
+    "build": "cross-env BABEL_ENV=production babel src -d dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaidohussar/ui.git"
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
+    ]
   },
+  "repository": "git+https://github.com/kaidohussar/ui.git",
   "keywords": [],
   "author": "Kaido Hussar",
   "license": "ISC",
@@ -38,6 +46,7 @@
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
+    "auto": "^10.29.3",
     "babel-loader": "^8.2.2",
     "eslint": "^7.31.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -51,6 +60,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "@storybook/addon-docs": "^6.3.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
