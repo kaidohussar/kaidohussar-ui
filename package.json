@@ -1,0 +1,58 @@
+{
+  "name": "ui-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "analyze": "source-map-explorer 'lib/index.js'",
+    "build-storybook": "build-storybook -s public",
+    "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "start": "npm run storybook",
+    "clean": "rimraf ./dist",
+    "storybook": "start-storybook -p 9009 -s public",
+    "stylelint": "stylelint --fix \"src/**/*.scss\"",
+    "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
+    "typecheck": "tsc --noEmit",
+    "release": "release-it",
+    "check:codestyle:js": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "check:codestyle:scss": "stylelint \"src/**/*.scss\"",
+    "publish-chromatic": "npx chromatic --project-token=461726485ea2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaidohussar/ui.git"
+  },
+  "keywords": [],
+  "author": "Kaido Hussar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaidohussar/ui/issues"
+  },
+  "homepage": "https://github.com/kaidohussar/ui/",
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/react": "^6.3.4",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
