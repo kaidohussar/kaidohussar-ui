@@ -4,19 +4,18 @@
   "description": "UI library by Kaido Hussar",
   "main": "dist/index.js",
   "scripts": {
-    "analyze": "source-map-explorer 'lib/index.js'",
     "build-storybook": "build-storybook -s public",
     "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
     "start": "npm run storybook",
     "clean": "rimraf ./dist",
     "storybook": "start-storybook -p 9009 -s public",
-    "stylelint": "stylelint --fix \"src/**/*.scss\"",
-    "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
     "typecheck": "tsc --noEmit",
     "release": "release-it",
     "check:codestyle:js": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "chromatic": "npx chromatic --project-token=461726485ea2",
-    "build": "cross-env BABEL_ENV=production babel src -d dist"
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx)\"",
+    "publish-npm": "npm publish"
   },
   "babel": {
     "presets": [
@@ -27,6 +26,9 @@
         }
       ]
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": "git+https://github.com/kaidohussar/ui.git",
   "keywords": [],
@@ -41,27 +43,43 @@
     "@storybook/addon-actions": "^6.3.4",
     "@storybook/addon-essentials": "^6.3.4",
     "@storybook/addon-links": "^6.3.4",
+    "@storybook/addons": "^6.3.5",
     "@storybook/react": "^6.3.4",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.11",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "auto": "^10.29.3",
     "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.13.2",
+    "babel-preset-react-app": "^10.0.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "import-sort-style-module-and-prefix": "^0.1.3",
     "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.0",
+    "prettier-plugin-import-sort": "0.0.7",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
   },
   "dependencies": {
     "@storybook/addon-docs": "^6.3.4",
+    "@storybook/theming": "^6.3.5",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0"
+  },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module-and-prefix",
+      "parser": "typescript"
+    }
   }
 }

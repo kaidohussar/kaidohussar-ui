@@ -1,0 +1,11 @@
+{
+  "groupings": [
+    "src",
+    "src/helpers",
+    "layouts",
+    "components",
+    [
+      "images",
+    ]
+  ]
+}

@@ -1,6 +1,6 @@
 /build-storybook.log
 /dist/
 /.cache/
-/.storybook/
 /yarn-error.log
 .env
+/storybook-static/
