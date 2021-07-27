@@ -5,7 +5,7 @@ module.exports = {
    resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
    },
-   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '../src/register.tsx'],
+   addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-addon-styled-component-theme/dist/preset'],
    babel: (options) => ({
       ...options,
       plugins: ['babel-plugin-styled-components'],

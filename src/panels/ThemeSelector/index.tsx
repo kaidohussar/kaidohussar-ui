@@ -1,27 +1,25 @@
-import addons from '@storybook/addons';
-import React, { useEffect } from 'react';
-import { ThemeProviderComponent } from 'styled-components';
+import React, {useState} from 'react';
 
-import { Theme } from '../../theming/types';
+export const ThemeSelector = ({api}: any) => {
+   const [selectedTheme, setSelectedTheme] = useState<string>();
 
-interface ThemesProviderProps {
-   themes: Theme[];
-   ThemeProvider: ThemeProviderComponent<any>;
-}
+   const selectTheme = (theme: string) => {
+      if (api && api.getChannel) {
+         const channel = api.getChannel();
+         channel.emit('selectTheme', theme);
+      }
 
-const BaseComponent: React.FC<any> = ({
-  theme, ThemeProvider, children, themes,
-}) => {
-  console.log({
-    theme, ThemeProvider, children, themes,
-  });
-  useEffect(() => {
-    const channel = addons.getChannel();
-    console.log('channel', channel);
-    channel.emit('setThemes', themes);
-  }, []);
+      setSelectedTheme(theme);
+   };
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+   return (
+      <div>
+         <button style={{border: selectedTheme === 'dark' ? '1px solid red' : 'unset'}} onClick={() => selectTheme('dark')}>
+            darks
+         </button>
+         <button style={{border: selectedTheme === 'light' ? '1px solid red' : 'unset'}} onClick={() => selectTheme('light')}>
+            lights
+         </button>
+      </div>
+   );
 };
-
-export const ThemesProvider: React.FC<ThemesProviderProps> = (props) => <BaseComponent {...props} />;
