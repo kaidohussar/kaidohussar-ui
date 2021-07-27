@@ -2,4 +2,4 @@
 
 <br />
 
-This is an ongoing project
+This is an ongoing project.
