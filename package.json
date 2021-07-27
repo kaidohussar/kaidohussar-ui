@@ -17,6 +17,9 @@
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx)\"",
     "publish-npm": "npm publish"
   },
+  "files": [
+    "src/components"
+  ],
   "babel": {
     "presets": [
       [
