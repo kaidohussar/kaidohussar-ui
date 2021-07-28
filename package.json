@@ -1,6 +1,6 @@
 {
   "name": "kaidohussar-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "UI library by Kaido Hussar",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "release": "release-it",
     "check:codestyle:js": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "chromatic": "npx chromatic --project-token=461726485ea2",
-    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "build": "microbundle --jsx React.createElement --external react ./src/index.ts",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx)\"",
     "publish-npm": "npm publish"
   },
@@ -71,7 +71,8 @@
     "typescript": "^4.3.5",
     "@storybook/addon-docs": "^6.3.4",
     "@storybook/theming": "^6.3.5",
-    "storybook-addon-styled-component-theme": "^2.0.0"
+    "storybook-addon-styled-component-theme": "^2.0.0",
+    "microbundle": "^0.13.1"
   },
   "dependencies": {
     "react": "^17.0.2",
