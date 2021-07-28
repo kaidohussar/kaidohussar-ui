@@ -18,7 +18,7 @@
     "publish-npm": "npm publish"
   },
   "files": [
-    "src/components"
+    "dist"
   ],
   "babel": {
     "presets": [
