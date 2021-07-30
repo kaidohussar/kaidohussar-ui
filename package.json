@@ -24,24 +24,6 @@
   "files": [
     "dist"
   ],
-  "babel": {
-    "presets": [
-      [
-        "react-app",
-        {
-          "absoluteRuntime": false
-        }
-      ]
-    ],
-    "plugins": [
-      [
-        "babel-plugin-styled-components",
-        {
-          "ssr": true
-        }
-      ]
-    ]
-  },
   "keywords": [],
   "author": "Kaido Hussar",
   "license": "ISC",
