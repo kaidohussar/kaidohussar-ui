@@ -2,11 +2,6 @@
 
 <h2>Design system for personal projects</h2>
 
-#
-#
-#
-#
-
 ### Install the library
 ```bash
 npm install kaidohussar/ui --save
