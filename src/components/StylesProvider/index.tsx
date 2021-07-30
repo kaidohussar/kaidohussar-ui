@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const StylesProvider: React.FC<StylesProviderProps> = ({children, themes}) => {
+export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes}) => {
    const savedTheme = window.localStorage.getItem('kaido-ui-theme') as string | null;
    const defaultLightTheme = defaultThemes.find((defaultTheme) => defaultTheme.name === 'light') as Theme;
 
@@ -58,5 +58,3 @@ const StylesProvider: React.FC<StylesProviderProps> = ({children, themes}) => {
       </StylesContext.Provider>
    );
 };
-
-export default StylesProvider;
