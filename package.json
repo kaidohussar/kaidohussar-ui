@@ -17,6 +17,10 @@
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx)\"",
     "publish-npm": "npm publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaidohussar/kaidohussar-ui.git"
+  },
   "files": [
     "dist"
   ],
