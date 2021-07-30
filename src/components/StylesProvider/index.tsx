@@ -27,13 +27,16 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+  
+  h1, h2, h3, h4, h5, p {
+     margin: 0;
+  }
 `;
 
-export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes}) => {
+export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes = defaultThemes}) => {
    const savedTheme = window.localStorage.getItem('kaido-ui-theme') as string | null;
-   const defaultLightTheme = defaultThemes.find((defaultTheme) => defaultTheme.name === 'light') as Theme;
 
-   const [themeName, setTheme] = useState<string>(savedTheme || defaultLightTheme.name);
+   const [themeName, setTheme] = useState<string>(savedTheme || defaultThemes[0].name);
 
    useEffect(() => {
       if (savedTheme !== themeName || savedTheme === null) {
