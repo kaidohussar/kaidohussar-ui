@@ -1,11 +1,18 @@
-import React from 'react';
+import {darken, lighten} from 'polished';
+import React, {ButtonHTMLAttributes} from 'react';
 import styled from 'styled-components';
 
-export interface ButtonProps {
+import {getButtonBackgroundColor, getButtonBorderColor, getButtonTextColor} from './utils';
+
+export type ButtonAppearance = 'primary' | 'secondary' | 'destructive';
+
+export type ButtonSize = 'small' | 'medium' | 'large';
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    /**
     * Appearance type
     */
-   appearance?: 'primary' | 'secondary';
+   appearance: ButtonAppearance;
    /**
     * What background color to use
     */
@@ -13,7 +20,7 @@ export interface ButtonProps {
    /**
     * How large should the button be?
     */
-   size?: 'small' | 'medium' | 'large';
+   size?: ButtonSize;
    /**
     * Optional click handler
     */
@@ -23,21 +30,42 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-const StyledButton = styled.button<ButtonProps>`
-   /* Adapt the colors based on primary prop */
-   background: ${({ appearance, theme }) => (appearance === 'primary' ? theme.backgroundColor : 'red')};
-   color: ${({ appearance, theme }) => (appearance === 'primary' ? theme.textColor : 'palevioletred')};
 
-   font-size: 1em;
-   margin: 1em;
-   padding: 0.25em 1em;
-   border: 2px solid palevioletred;
-   border-radius: 3px;
+const StyledButton = styled.button<ButtonProps>`
+   background: ${({appearance, theme}) => getButtonBackgroundColor(theme, appearance)};
+   color: ${({appearance, theme}) => getButtonTextColor(theme, appearance)};
+
+   font-size: ${({theme}) => `${theme.buttonLabelFontSize}px`};
+   text-transform: uppercase;
+   margin: 0;
+   padding: ${({theme}) => `${theme.gridunit / 2}px ${theme.gridunit * 2}px`};
+   border-radius: ${({theme}) => `${theme.buttonBorderRadius}px`};
+   border-width: 2px;
+   border-color: ${({appearance, theme}) => getButtonBorderColor(theme, appearance)};
+   height: 44px;
+   border-style: solid;
+   cursor: pointer;
+
+   transition: all 0.2s;
+
+   &:focus {
+      outline: none;
+   }
+
+   &:hover {
+      background: ${({appearance, theme}) => (appearance === 'primary' ? lighten : darken)(0.1, getButtonBackgroundColor(theme, appearance))};
+      border-color: ${({appearance, theme}) => darken(0.1, getButtonBorderColor(theme, appearance))};
+   }
+
+   &:active {
+      transform: scale(0.95);
+   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({ children, size, ...props }) => (
-  <StyledButton size={size} {...props}>
-    {children}
-  </StyledButton>
+export const Button: React.FC<ButtonProps> = ({children, size, ...props}) => (
+   <StyledButton size={size} role="button" {...props}>
+      {children}
+   </StyledButton>
 );
+
 Button.displayName = 'Button';
