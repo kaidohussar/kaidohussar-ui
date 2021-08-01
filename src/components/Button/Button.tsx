@@ -1,6 +1,6 @@
 import {darken, lighten} from 'polished';
 import React, {ButtonHTMLAttributes} from 'react';
-import styled from 'styled-components';
+import {styled} from 'theming/defaultTheme';
 
 import {getButtonBackgroundColor, getButtonBorderColor, getButtonTextColor} from './utils';
 
@@ -35,11 +35,11 @@ const StyledButton = styled.button<ButtonProps>`
    background: ${({appearance, theme}) => getButtonBackgroundColor(theme, appearance)};
    color: ${({appearance, theme}) => getButtonTextColor(theme, appearance)};
 
-   font-size: ${({theme}) => `${theme.buttonLabelFontSize}px`};
+   font-size: ${({theme}) => `${theme.fontSizes.sm}px`};
    text-transform: uppercase;
    margin: 0;
-   padding: ${({theme}) => `${theme.gridunit / 2}px ${theme.gridunit * 2}px`};
-   border-radius: ${({theme}) => `${theme.buttonBorderRadius}px`};
+   padding: ${({theme}) => `${theme.spacing.xs} ${theme.spacing.md}`};
+   border-radius: ${({theme}) => theme.buttonBorderRadius};
    border-width: 2px;
    border-color: ${({appearance, theme}) => getButtonBorderColor(theme, appearance)};
    height: 44px;

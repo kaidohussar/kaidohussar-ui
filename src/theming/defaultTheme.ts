@@ -1,16 +1,13 @@
+import baseStyled, {ThemedStyledInterface} from 'styled-components';
+
 import {Theme} from './types';
 
+export const styled = baseStyled as ThemedStyledInterface<Theme>;
+
+const baseUnit = 8;
+
 const misc = {
-   buttonBorderRadius: 4,
-};
-
-const textProperties = {
-   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
-
-   headingSmallFontSize: 14,
-   headingMediumFontSize: 24,
-   headingLargeFontSize: 32,
-   headingVeryLargeFontSize: 48,
+   buttonBorderRadius: '4px',
 };
 
 const colorLightAndDark = {
@@ -18,45 +15,79 @@ const colorLightAndDark = {
    colorLightBg: '#1A1A1A',
 };
 
+const spacing = {
+   gridunit: baseUnit,
+   xxs: `${baseUnit / 4}px`,
+   xs: `${baseUnit / 2}px`,
+   sm: `${baseUnit}px`,
+   md: `${baseUnit * 2}px`,
+   lg: `${baseUnit * 4}px`,
+   xl: `${baseUnit * 8}px`,
+   xxl: `${baseUnit * 16}px`,
+};
+
+const fontSizes = {
+   xs: '12px',
+   sm: '14px',
+   md: '16px',
+   lg: '18px',
+   xl: '24px',
+   xxl: '32px',
+   xxxl: '48px',
+};
+
+const fontWeights = {
+   thin: 100,
+   extralight: 200,
+   light: 300,
+   regular: 400,
+   medium: 500,
+   semibold: 600,
+   bold: 700,
+   extrabold: 800,
+};
+
 export const defaultThemes: Theme[] = [
    {
       name: 'light',
 
-      gridunit: 8,
+      colors: {
+         ...colorLightAndDark,
+         accentColor: '#1A1A1A',
+         backgroundColor: '#FCFCFD',
 
-      buttonLabelFontSize: 14,
+         dangerColor: '#FF3F00',
 
-      // Colors
-      accentColor: '#1A1A1A',
-      backgroundColor: '#FCFCFD',
+         linkColor: 'blue',
+         linkFocusedColor: 'darkblue',
+      },
 
-      dangerColor: '#FF3F00',
+      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 
-      linkColor: '#1A1A1A',
-      linkFocusedColor: '#1A1A1A',
-
-      ...colorLightAndDark,
+      fontWeights,
+      fontSizes,
+      spacing,
       ...misc,
-      ...textProperties,
    },
    {
       name: 'dark',
 
-      gridunit: 8,
+      colors: {
+         ...colorLightAndDark,
+         accentColor: '#FFFFFF',
+         backgroundColor: '#1A1A1A',
 
-      buttonLabelFontSize: 14,
+         dangerColor: '#FF3F00',
 
-      // Colors
-      accentColor: '#FFFFFF',
-      backgroundColor: '#1A1A1A',
+         linkColor: '#FFFFFF',
+         linkFocusedColor: '#FFFFFF',
+      },
 
-      dangerColor: '#FF3F00',
+      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 
-      linkColor: '#FFFFFF',
-      linkFocusedColor: '#FFFFFF',
-
-      ...colorLightAndDark,
+      fontWeights,
+      fontSizes,
+      spacing,
       ...misc,
-      ...textProperties,
    },
 ];

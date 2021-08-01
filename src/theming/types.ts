@@ -1,29 +1,55 @@
 export interface Theme {
    name: string;
 
-   gridunit: number;
+   // spacing
+   spacing: {
+      gridunit: number;
+      xxs: string;
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+   };
 
    fontFamily: string;
-   headingSmallFontSize: number;
-   headingMediumFontSize: number;
-   headingLargeFontSize: number;
-   headingVeryLargeFontSize: number;
 
-   buttonLabelFontSize: number;
+   fontSizes: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+      xxxl: string;
+   };
 
-   // strings
-   accentColor: string;
-   backgroundColor: string;
+   fontWeights: {
+      thin: number;
+      extralight: number;
+      light: number;
+      regular: number;
+      medium: number;
+      semibold: number;
+      bold: number;
+      extrabold: number;
+   };
 
-   colorDarkBg: string;
-   colorLightBg: string;
+   colors: {
+      accentColor: string;
+      backgroundColor: string;
 
-   dangerColor: string;
+      colorDarkBg: string;
+      colorLightBg: string;
 
-   linkColor: string;
-   linkFocusedColor: string;
+      dangerColor: string;
+
+      linkColor: string;
+      linkFocusedColor: string;
+   };
 
    // Misc
 
-   buttonBorderRadius: number;
+   buttonBorderRadius: string;
 }
