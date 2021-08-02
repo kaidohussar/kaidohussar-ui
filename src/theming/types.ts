@@ -1,29 +1,18 @@
+type DefaultSpacings = {[keyof in SpacingOptions]: string};
+
+interface Spacing extends DefaultSpacings {
+   gridunit: number;
+}
+
 export interface Theme {
    name: string;
 
    // spacing
-   spacing: {
-      gridunit: number;
-      xxs: string;
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-      xxl: string;
-   };
+   spacing: Spacing;
 
    fontFamily: string;
 
-   fontSizes: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-      xxl: string;
-      xxxl: string;
-   };
+   fontSizes: DefaultSpacings;
 
    fontWeights: {
       thin: number;
@@ -49,7 +38,13 @@ export interface Theme {
       linkFocusedColor: string;
    };
 
+   breakpoints: DefaultSpacings;
+
    // Misc
 
-   buttonBorderRadius: string;
+   defaultBorderRadius: string;
+
+   uiSpeed: string;
 }
+
+export type SpacingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';

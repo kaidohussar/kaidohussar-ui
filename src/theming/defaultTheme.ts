@@ -1,13 +1,13 @@
 import baseStyled, {ThemedStyledInterface} from 'styled-components';
 
-import {Theme} from './types';
+import {SpacingOptions, Theme} from './types';
 
 export const styled = baseStyled as ThemedStyledInterface<Theme>;
 
 const baseUnit = 8;
 
 const misc = {
-   buttonBorderRadius: '4px',
+   defaultBorderRadius: '4px',
 };
 
 const colorLightAndDark = {
@@ -47,6 +47,27 @@ const fontWeights = {
    extrabold: 800,
 };
 
+const uiSpeed = '0.2s';
+const BASE = 4;
+
+const breakpoints = {
+   xs: '0px',
+   sm: `${BASE * 144}px`,
+   md: `${BASE * 192}px`,
+   lg: `${BASE * 248}px`,
+   xl: `${BASE * 300}px`,
+   xxl: `${BASE * 348}px`,
+};
+
+export const deviceBreakpoints: {[key in SpacingOptions]: string} = {
+   xs: `(min-width: ${breakpoints.xs})`,
+   sm: `(min-width: ${breakpoints.sm})`,
+   md: `(min-width: ${breakpoints.md})`,
+   lg: `(min-width: ${breakpoints.lg})`,
+   xl: `(min-width: ${breakpoints.xl})`,
+   xxl: `(min-width: ${breakpoints.xxl})`,
+};
+
 export const defaultThemes: Theme[] = [
    {
       name: 'light',
@@ -64,6 +85,9 @@ export const defaultThemes: Theme[] = [
 
       fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 
+      uiSpeed,
+
+      breakpoints,
       fontWeights,
       fontSizes,
       spacing,
@@ -85,6 +109,9 @@ export const defaultThemes: Theme[] = [
 
       fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 
+      uiSpeed,
+
+      breakpoints,
       fontWeights,
       fontSizes,
       spacing,

@@ -39,7 +39,7 @@ const StyledButton = styled.button<ButtonProps>`
    text-transform: uppercase;
    margin: 0;
    padding: ${({theme}) => `${theme.spacing.xs} ${theme.spacing.md}`};
-   border-radius: ${({theme}) => theme.buttonBorderRadius};
+   border-radius: ${({theme}) => theme.defaultBorderRadius};
    border-width: 2px;
    border-color: ${({appearance, theme}) => getButtonBorderColor(theme, appearance)};
    height: 44px;

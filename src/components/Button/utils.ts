@@ -1,7 +1,7 @@
 // Util func
 
 import {Theme} from '../../theming/types';
-import {ButtonAppearance} from './Button';
+import {ButtonAppearance} from './';
 
 export const getButtonBackgroundColor = (theme: Theme, appearance: ButtonAppearance) => {
    switch (appearance) {

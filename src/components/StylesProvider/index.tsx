@@ -13,6 +13,7 @@ export const StylesContext = createContext<{
 
 interface StylesProviderProps {
    themes?: Array<Theme>;
+   selectedTheme?: string;
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -33,10 +34,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes = defaultThemes}) => {
+export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes = defaultThemes, selectedTheme}) => {
    const savedTheme = window.localStorage.getItem('kaido-ui-theme') as string | null;
 
-   const [themeName, setTheme] = useState<string>(savedTheme || defaultThemes[0].name);
+   const [themeName, setTheme] = useState<string>(savedTheme || selectedTheme || defaultThemes[0].name);
 
    useEffect(() => {
       if (savedTheme !== themeName || savedTheme === null) {
@@ -45,7 +46,7 @@ export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes 
    }, [savedTheme, themeName]);
 
    const findSelectedTheme = (themes: Theme[]) => themes.find((currentTheme) => currentTheme.name === themeName);
-   const selectedTheme = findSelectedTheme(themes && themes.length > 0 ? themes : defaultThemes);
+   const activeTheme = findSelectedTheme(themes && themes.length > 0 ? themes : defaultThemes);
 
    return (
       <StylesContext.Provider
@@ -54,7 +55,7 @@ export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes 
             setTheme,
          }}
       >
-         <ThemeProvider theme={selectedTheme}>
+         <ThemeProvider theme={activeTheme}>
             <GlobalStyle />
             {children}
          </ThemeProvider>
