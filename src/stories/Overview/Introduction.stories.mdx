@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
+import { themeLight } from "../../theming/defaultTheme";
 
 <Meta title="Overview/Introduction" />
 
@@ -15,58 +16,60 @@ yarn add kaidohussar/ui
 
 Default values for light theme are displayed here:
 ```bash
-     {
-      name: 'light',
-
-      colors: {
-         accentColor: '#1A1A1A',
-         backgroundColor: '#FCFCFD',
-
-         colorDarkBg: '#FFFFFF',
-         colorLightBg: '#1A1A1A',
-
-         dangerColor: '#FF3F00',
-
-         linkColor: 'blue',
-         linkFocusedColor: 'darkblue',
-      },
-
-      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
-
-      uiSpeed: '0.2s',
-
-      fontWeights: {
-         thin: 100,
-         extralight: 200,
-         light: 300,
-         regular: 400,
-         medium: 500,
-         semibold: 600,
-         bold: 700,
-         extrabold: 800,
-      },
-      fontSizes: {
-         xs: '12px',
-         sm: '14px',
-         md: '16px',
-         lg: '18px',
-         xl: '24px',
-         xxl: '32px',
-         xxxl: '48px',
-      },
-      spacing: {
-         gridunit: baseUnit, // 8
-         xxs: `${baseUnit / 4}px`,
-         xs: `${baseUnit / 2}px`,
-         sm: `${baseUnit}px`,
-         md: `${baseUnit * 2}px`,
-         lg: `${baseUnit * 4}px`,
-         xl: `${baseUnit * 8}px`,
-         xxl: `${baseUnit * 16}px`,
-      },
-
-      defaultBorderRadius: '4px',
-   },
+{
+    "name": "light",
+    "colors": {
+        "textColorDarkBg": "#FFFFFF",
+        "textColorLightBg": "#1A1A1A",
+        "accentColor": "#1A1A1A",
+        "backgroundColor": "#FCFCFD",
+        "dangerColor": "#FF3F00",
+        "linkColor": "blue",
+        "linkFocusedColor": "darkblue"
+    },
+    "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
+    "uiSpeed": "0.2s",
+    "breakpoints": {
+        "xs": "0px",
+        "sm": "576px",
+        "md": "768px",
+        "lg": "992px",
+        "xl": "1200px",
+        "xxl": "1392px",
+        "xxxl": "1600px"
+    },
+    "fontWeights": {
+        "thin": 100,
+        "extralight": 200,
+        "light": 300,
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700,
+        "extrabold": 800
+    },
+    "fontSizes": {
+        "xs": "12px",
+        "sm": "14px",
+        "md": "16px",
+        "lg": "18px",
+        "xl": "24px",
+        "xxl": "32px",
+        "xxxl": "48px"
+    },
+    "spacing": {
+        "gridunit": 8,
+        "xxs": "2px",
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "32px",
+        "xl": "64px",
+        "xxl": "128px",
+        "xxxl": "192px"
+    },
+    "defaultBorderRadius": "4px"
+}
 ```
 
 ### Usage with React
@@ -76,6 +79,33 @@ Default and recommended usage. All components are available as modules and you c
 import { Button } from 'kaidohussar/ui';
 
 <Button>Click me</Button>
+```
+
+### Themeing
+Theming is really easy
+
+#### Wrap your application with StylesProvider
+
+```jsx
+import { StylesProvider } from 'kaidohussar/ui';
+
+<StylesProvider themes={[myCustomLightTheme, myCustomDarkTheme]}>
+    <App />
+</StylesProvider>
+```
+
+#### Change your theme with a useTheme hook
+
+```jsx
+import { useTheme } from 'kaidohussar/ui';
+
+const { setTheme, theme } = useTheme();
+
+console.log('currently active theme', theme);
+
+<Button onClick={() => setTheme("dark")}>
+    Switch to dark theme
+</Button>
 ```
 
 

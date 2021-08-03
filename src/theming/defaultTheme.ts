@@ -1,8 +1,9 @@
-import baseStyled, {ThemedStyledInterface} from 'styled-components';
+import baseStyled, {css as StyledCss, ThemedCssFunction, ThemedStyledInterface} from 'styled-components';
 
 import {SpacingOptions, Theme} from './types';
 
 export const styled = baseStyled as ThemedStyledInterface<Theme>;
+export const css = StyledCss as ThemedCssFunction<Theme>;
 
 const baseUnit = 8;
 
@@ -11,8 +12,8 @@ const misc = {
 };
 
 const colorLightAndDark = {
-   colorDarkBg: '#FFFFFF',
-   colorLightBg: '#1A1A1A',
+   textColorDarkBg: '#FFFFFF',
+   textColorLightBg: '#1A1A1A',
 };
 
 const spacing = {
@@ -24,6 +25,7 @@ const spacing = {
    lg: `${baseUnit * 4}px`,
    xl: `${baseUnit * 8}px`,
    xxl: `${baseUnit * 16}px`,
+   xxxl: `${baseUnit * 24}px`,
 };
 
 const fontSizes = {
@@ -57,6 +59,7 @@ const breakpoints = {
    lg: `${BASE * 248}px`,
    xl: `${BASE * 300}px`,
    xxl: `${BASE * 348}px`,
+   xxxl: `${BASE * 400}px`,
 };
 
 export const deviceBreakpoints: {[key in SpacingOptions]: string} = {
@@ -66,55 +69,57 @@ export const deviceBreakpoints: {[key in SpacingOptions]: string} = {
    lg: `(min-width: ${breakpoints.lg})`,
    xl: `(min-width: ${breakpoints.xl})`,
    xxl: `(min-width: ${breakpoints.xxl})`,
+   xxxl: `(min-width: ${breakpoints.xxxl})`,
 };
 
-export const defaultThemes: Theme[] = [
-   {
-      name: 'light',
+const themeLight = {
+   name: 'light',
 
-      colors: {
-         ...colorLightAndDark,
-         accentColor: '#1A1A1A',
-         backgroundColor: '#FCFCFD',
+   colors: {
+      ...colorLightAndDark,
+      accentColor: '#1A1A1A',
+      backgroundColor: '#FCFCFD',
 
-         dangerColor: '#FF3F00',
+      dangerColor: '#FF3F00',
 
-         linkColor: 'blue',
-         linkFocusedColor: 'darkblue',
-      },
-
-      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
-
-      uiSpeed,
-
-      breakpoints,
-      fontWeights,
-      fontSizes,
-      spacing,
-      ...misc,
+      linkColor: 'blue',
+      linkFocusedColor: 'darkblue',
    },
-   {
-      name: 'dark',
 
-      colors: {
-         ...colorLightAndDark,
-         accentColor: '#FFFFFF',
-         backgroundColor: '#1A1A1A',
+   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 
-         dangerColor: '#FF3F00',
+   uiSpeed,
 
-         linkColor: '#FFFFFF',
-         linkFocusedColor: '#FFFFFF',
-      },
+   breakpoints,
+   fontWeights,
+   fontSizes,
+   spacing,
+   ...misc,
+};
 
-      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+const themeDark = {
+   name: 'dark',
 
-      uiSpeed,
+   colors: {
+      ...colorLightAndDark,
+      accentColor: '#FFFFFF',
+      backgroundColor: '#1A1A1A',
 
-      breakpoints,
-      fontWeights,
-      fontSizes,
-      spacing,
-      ...misc,
+      dangerColor: '#FF3F00',
+
+      linkColor: '#FFFFFF',
+      linkFocusedColor: '#FFFFFF',
    },
-];
+
+   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+
+   uiSpeed,
+
+   breakpoints,
+   fontWeights,
+   fontSizes,
+   spacing,
+   ...misc,
+};
+
+export const defaultThemes: Theme[] = [themeLight, themeDark];

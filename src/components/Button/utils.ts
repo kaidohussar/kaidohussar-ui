@@ -17,20 +17,20 @@ export const getButtonBackgroundColor = (theme: Theme, appearance: ButtonAppeara
 export const getButtonTextColor = (theme: Theme, appearance: ButtonAppearance) => {
    switch (appearance) {
       case 'primary':
-         return theme.name === 'light' ? theme.colors.colorDarkBg : theme.colors.colorLightBg;
+         return theme.name === 'light' ? theme.colors.textColorDarkBg : theme.colors.textColorLightBg;
       case 'secondary':
-         return theme.name === 'light' ? theme.colors.colorLightBg : theme.colors.colorDarkBg;
+         return theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg;
       case 'destructive':
-         return theme.colors.colorDarkBg;
+         return theme.colors.textColorDarkBg;
    }
 };
 
 export const getButtonBorderColor = (theme: Theme, appearance: ButtonAppearance) => {
    switch (appearance) {
       case 'primary':
-         return theme.name === 'light' ? theme.colors.accentColor : theme.colors.colorLightBg;
+         return theme.name === 'light' ? theme.colors.accentColor : theme.colors.textColorLightBg;
       case 'secondary':
-         return theme.name === 'light' ? theme.colors.colorLightBg : theme.colors.colorDarkBg;
+         return theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg;
       case 'destructive':
          return theme.colors.dangerColor;
    }

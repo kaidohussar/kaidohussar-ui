@@ -10,7 +10,7 @@ export default {
 export const Primary = () => (
    <Box
       alignItems={[{['md']: 'center'}]}
-      justifyContent={[{['md']: 'flex-end'}, {['sm']: 'flex-end'}]}
+      justifyContent={[{['md']: 'center'}]}
       flexDirection={[{['xs']: 'column'}, {['lg']: 'row'}]}
    >
       <p>Test content</p>

@@ -1,7 +1,6 @@
-import {css} from 'styled-components';
+import {css, deviceBreakpoints} from 'theming/defaultTheme';
+import {SpacingOptions} from 'theming/types';
 
-import {deviceBreakpoints} from '../../theming/defaultTheme';
-import {SpacingOptions} from '../../theming/types';
 import {BoxProps, FlexAlignmentType, FlexDirectionType, SpacingType} from './index';
 
 export const displaySpacingPropertiesByBreakpoint = (cssProp: keyof BoxProps, options: Array<SpacingType>) => {

@@ -1,8 +1,12 @@
 type DefaultSpacings = {[keyof in SpacingOptions]: string};
+type DefaultFontSizes = {[keyof in SizingOptions]: string};
 
 interface Spacing extends DefaultSpacings {
    gridunit: number;
 }
+
+export type SpacingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+export type SizingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
 export interface Theme {
    name: string;
@@ -12,7 +16,7 @@ export interface Theme {
 
    fontFamily: string;
 
-   fontSizes: DefaultSpacings;
+   fontSizes: DefaultFontSizes;
 
    fontWeights: {
       thin: number;
@@ -29,8 +33,8 @@ export interface Theme {
       accentColor: string;
       backgroundColor: string;
 
-      colorDarkBg: string;
-      colorLightBg: string;
+      textColorDarkBg: string;
+      textColorLightBg: string;
 
       dangerColor: string;
 
@@ -46,5 +50,3 @@ export interface Theme {
 
    uiSpeed: string;
 }
-
-export type SpacingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
