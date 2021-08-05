@@ -1,5 +1,7 @@
 type DefaultSpacings = {[keyof in SpacingOptions]: string};
 type DefaultFontSizes = {[keyof in SizingOptions]: string};
+type DefaultColors = {[keyof in ColorOptions]: string};
+type DefaultFontWeights = {[keyof in FontWeightOptions]: number};
 
 interface Spacing extends DefaultSpacings {
    gridunit: number;
@@ -7,6 +9,15 @@ interface Spacing extends DefaultSpacings {
 
 export type SpacingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 export type SizingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+export type FontWeightOptions = 'thin' | 'extralight' | 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'extrabold';
+export type ColorOptions =
+   | 'accentColor'
+   | 'backgroundColor'
+   | 'textColorDarkBg'
+   | 'textColorLightBg'
+   | 'dangerColor'
+   | 'linkColor'
+   | 'linkFocusedColor';
 
 export interface Theme {
    name: string;
@@ -18,29 +29,9 @@ export interface Theme {
 
    fontSizes: DefaultFontSizes;
 
-   fontWeights: {
-      thin: number;
-      extralight: number;
-      light: number;
-      regular: number;
-      medium: number;
-      semibold: number;
-      bold: number;
-      extrabold: number;
-   };
+   fontWeights: DefaultFontWeights;
 
-   colors: {
-      accentColor: string;
-      backgroundColor: string;
-
-      textColorDarkBg: string;
-      textColorLightBg: string;
-
-      dangerColor: string;
-
-      linkColor: string;
-      linkFocusedColor: string;
-   };
+   colors: DefaultColors;
 
    breakpoints: DefaultSpacings;
 

@@ -5,7 +5,7 @@ import {SpacingOptions, Theme} from './types';
 export const styled = baseStyled as ThemedStyledInterface<Theme>;
 export const css = StyledCss as ThemedCssFunction<Theme>;
 
-const baseUnit = 8;
+export const baseUnit = 8;
 
 const misc = {
    defaultBorderRadius: '4px',

@@ -8,31 +8,34 @@ import {
    displaySpacingPropertiesByBreakpoint,
 } from './utils';
 
-export type FlexAlignmentType = Partial<{[key in SpacingOptions]: 'flex-end' | 'center' | 'flex-start'}>;
+export type FlexAlignmentOptions = 'flex-end' | 'center' | 'flex-start' | 'space-between' | 'space-around';
+export type FlexDirectionOptions = 'column' | 'row';
 
-export type FlexDirectionType = Partial<{[key in SpacingOptions]: 'column' | 'row'}>;
+export type FlexAlignmentType = Partial<{[key in SpacingOptions]: FlexAlignmentOptions}> | FlexAlignmentOptions;
 
-export type SpacingType = Partial<{[key in SpacingOptions]: SpacingOptions}>;
+export type FlexDirectionType = Partial<{[key in SpacingOptions]: FlexDirectionOptions}> | FlexDirectionOptions;
+
+export type SpacingType = Partial<{[key in SpacingOptions]: SpacingOptions}> | SpacingOptions;
 
 export interface BoxProps {
    /**
     * Flex direction properties
     */
-   flexDirection?: Array<FlexDirectionType>;
+   flexDirection?: FlexDirectionType;
 
    /**
     * Flex alignment properties
     */
-   justifyContent?: Array<FlexAlignmentType>;
-   alignItems?: Array<FlexAlignmentType>;
+   justifyContent?: FlexAlignmentType;
+   alignItems?: FlexAlignmentType;
 
    /**
     * Spacing
     */
-   top?: Array<SpacingType>;
-   right?: Array<SpacingType>;
-   bottom?: Array<SpacingType>;
-   left?: Array<SpacingType>;
+   top?: SpacingType;
+   right?: SpacingType;
+   bottom?: SpacingType;
+   left?: SpacingType;
 }
 
 /**
@@ -55,7 +58,7 @@ const StyledBox = styled.div<BoxProps>`
       margin: 0;
    }
 
-   &:first-child {
+   &:first-child:not(:only-child) {
       margin-top: 0;
    }
 `;

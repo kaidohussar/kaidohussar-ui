@@ -1,7 +1,5 @@
 <h1>Set of UI components made by Kaido Hussar ⚡</h1>
 
-<h2>Design system for personal projects</h2>
-
 ### Install the library
 ```bash
 npm install kaidohussar/ui --save
@@ -81,7 +79,7 @@ import { Button } from 'kaidohussar/ui';
 ```
 
 ### Themeing
-Theming is really easy
+Theming is as easy as it can be
 
 #### Wrap your application with StylesProvider
 
