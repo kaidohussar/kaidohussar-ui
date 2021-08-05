@@ -5,10 +5,10 @@ module.exports = {
    resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: {
-         src: path.resolve(__dirname, '../../src/*'),
-         stories: path.resolve(__dirname, '../../src/stories'),
-         components: path.resolve(__dirname, '../../src/components'),
-         themeing: path.resolve(__dirname, '../../src/themeing'),
+         src: path.resolve(__dirname, 'src/*'),
+         stories: path.resolve(__dirname, 'src/stories'),
+         components: path.resolve(__dirname, 'src/components'),
+         themeing: path.resolve(__dirname, 'src/themeing'),
       },
       extensions: ['.tsx', '.ts', '.js', '.jsx', '.mdx'],
    },
