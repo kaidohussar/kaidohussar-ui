@@ -4,7 +4,7 @@
   "description": "UI library by Kaido Hussar",
   "main": "dist/index.js",
   "scripts": {
-    "build-storybook": "build-storybook -o public",
+    "build-storybook": "build-storybook -- -o public",
     "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
     "start": "npm run storybook",
     "clean": "rimraf ./dist",
