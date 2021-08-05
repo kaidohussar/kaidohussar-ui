@@ -8,7 +8,7 @@ module.exports = {
          src: path.resolve(__dirname, 'src/*'),
          stories: path.resolve(__dirname, 'src/stories'),
          components: path.resolve(__dirname, 'src/components'),
-         themeing: path.resolve(__dirname, 'src/themeing'),
+         theming: path.resolve(__dirname, 'src/theming'),
       },
       extensions: ['.tsx', '.ts', '.js', '.jsx', '.mdx'],
    },
