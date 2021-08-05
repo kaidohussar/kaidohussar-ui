@@ -4,6 +4,13 @@ module.exports = {
    stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
    resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+         src: path.resolve(__dirname, '../../src/*'),
+         stories: path.resolve(__dirname, '../../src/stories'),
+         components: path.resolve(__dirname, '../../src/components'),
+         themeing: path.resolve(__dirname, '../../src/themeing'),
+      },
+      extensions: ['.tsx', '.ts', '.js', '.jsx', '.mdx'],
    },
    addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-addon-styled-component-theme/dist/preset'],
    babel: (options) => ({
