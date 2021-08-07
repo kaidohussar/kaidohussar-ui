@@ -4,6 +4,7 @@ module.exports = {
    stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
    resolve: {
       modules: [path.resolve(__dirname, '../src'), 'node_modules'],
+      entry: path.resolve(__dirname, '../src/index.ts'),
       alias: {
          src: path.resolve(__dirname, '../src/*'),
          stories: path.resolve(__dirname, '../src/stories'),
