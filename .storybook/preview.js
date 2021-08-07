@@ -12,6 +12,15 @@ export const parameters = {
          date: /Date$/,
       },
    },
+   backgrounds: {
+      default: 'twitter',
+      values: [
+         {
+            name: 'grey',
+            value: 'grey',
+         },
+      ],
+   },
 };
 
 addDecorator(withThemesProvider(defaultThemes), ThemeProvider);

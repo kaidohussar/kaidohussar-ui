@@ -15,6 +15,7 @@ export type ColorOptions =
    | 'backgroundColor'
    | 'textColorDarkBg'
    | 'textColorLightBg'
+   | 'textColor'
    | 'grey100'
    | 'grey300'
    | 'grey400'

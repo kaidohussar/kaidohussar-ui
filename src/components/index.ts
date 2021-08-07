@@ -5,3 +5,5 @@ export * from './Text';
 export * from './Heading';
 export * from './Switch';
 export * from './Icon';
+export * from './Box';
+export * from './NavHeader';

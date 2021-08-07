@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import {styled} from 'theming';
+import {css} from 'theming/defaultTheme';
 
 import {Text} from '../Text';
 
@@ -31,13 +32,14 @@ const CheckBoxWrapper = styled.div`
 `;
 const CheckBoxLabel = styled.label`
    position: absolute;
-   top: 0;
+   top: 50%;
    left: 0;
    width: 42px;
    height: 16px;
    border-radius: 15px;
    background: #bebebe;
    cursor: pointer;
+   transform: translateY(-50%);
    &::after {
       content: '';
       position: absolute;
@@ -53,9 +55,9 @@ const CheckBoxLabel = styled.label`
 const Input = styled.input`
    opacity: 0;
    z-index: 1;
-   border-radius: 15px;
+   border-radius: 16px;
    width: 40px;
-   height: 26px;
+   height: 16px;
    margin: 0;
    background: ${({theme}) => theme.colors.grey100};
    &:checked + ${CheckBoxLabel} {
@@ -72,7 +74,13 @@ const Input = styled.input`
 
 const Wrapper = styled.div`
    display: flex;
-   font-family: ${({theme}) => theme.fontFamily};
+   align-items: center;
+
+   ${({theme}) => css`
+      font-family: ${theme.fontFamily};
+      font-weight: ${theme.fontWeights.regular};
+      color: ${theme.colors.textColor};
+   `};
 
    > *:not(:last-child) {
       margin-right: 1rem;

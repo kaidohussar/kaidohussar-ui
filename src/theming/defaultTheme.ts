@@ -88,6 +88,8 @@ const themeLight = {
       accentColor: '#1A1A1A',
       backgroundColor: '#FCFCFD',
 
+      textColor: '#1A1A1A',
+
       dangerColor: '#FF3F00',
 
       linkColor: 'blue',
@@ -113,6 +115,8 @@ const themeDark = {
       ...colorLightAndDark,
       accentColor: '#FFFFFF',
       backgroundColor: '#1A1A1A',
+
+      textColor: '#FFFFFF',
 
       dangerColor: '#FF3F00',
 
