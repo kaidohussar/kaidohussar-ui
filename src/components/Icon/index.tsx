@@ -38,7 +38,7 @@ export interface IconProps {
  */
 
 const StyledIcon = styled.div.attrs(({href, target}: IconProps) => ({
-   as: href ? 'a' : 'div',
+   as: href && 'a',
    ...(href ? {target: target || '_self'} : {}),
 }))<IconProps>`
    display: block;

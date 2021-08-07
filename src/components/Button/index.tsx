@@ -4,7 +4,7 @@ import {styled} from 'theming/defaultTheme';
 
 import {getButtonBackgroundColor, getButtonBorderColor, getButtonTextColor} from './utils';
 
-export type ButtonAppearance = 'primary' | 'secondary' | 'destructive';
+export type ButtonAppearance = 'primary' | 'secondary' | 'destructive' | 'text';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -35,16 +35,17 @@ const StyledButton = styled.button<ButtonProps>`
    background: ${({appearance, theme}) => getButtonBackgroundColor(theme, appearance)};
    color: ${({appearance, theme}) => getButtonTextColor(theme, appearance)};
 
-   font-size: ${({theme}) => `${theme.fontSizes.sm}px`};
+   font-size: ${({theme}) => `${theme.fontSizes.sm}`};
    text-transform: uppercase;
    margin: 0;
-   padding: ${({theme}) => `${theme.spacing.xs} ${theme.spacing.md}`};
+   padding: ${({theme, appearance}) => (appearance === 'text' ? '0px' : `${theme.spacing.xs} ${theme.spacing.md}`)};
    border-radius: ${({theme}) => theme.defaultBorderRadius};
    border-width: 2px;
    border-color: ${({appearance, theme}) => getButtonBorderColor(theme, appearance)};
-   height: 44px;
+   height: ${({appearance}) => (appearance === 'text' ? 'auto' : '44px')};
    border-style: solid;
    cursor: pointer;
+   font-family: ${({theme}) => theme.fontFamily};
 
    transition: all 0.2s;
 
@@ -53,7 +54,8 @@ const StyledButton = styled.button<ButtonProps>`
    }
 
    &:hover {
-      background: ${({appearance, theme}) => (appearance === 'primary' ? lighten : darken)(0.1, getButtonBackgroundColor(theme, appearance))};
+      background: ${({appearance, theme}) =>
+         (appearance === 'primary' ? lighten : darken)(0.1, getButtonBackgroundColor(theme, appearance))};
       border-color: ${({appearance, theme}) => darken(0.1, getButtonBorderColor(theme, appearance))};
    }
 

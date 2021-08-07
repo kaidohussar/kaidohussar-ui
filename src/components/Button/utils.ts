@@ -11,6 +11,8 @@ export const getButtonBackgroundColor = (theme: Theme, appearance: ButtonAppeara
          return theme.colors.backgroundColor;
       case 'destructive':
          return theme.colors.dangerColor;
+      case 'text':
+         return 'transparent';
    }
 };
 
@@ -19,6 +21,7 @@ export const getButtonTextColor = (theme: Theme, appearance: ButtonAppearance) =
       case 'primary':
          return theme.name === 'light' ? theme.colors.textColorDarkBg : theme.colors.textColorLightBg;
       case 'secondary':
+      case 'text':
          return theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg;
       case 'destructive':
          return theme.colors.textColorDarkBg;
@@ -33,5 +36,7 @@ export const getButtonBorderColor = (theme: Theme, appearance: ButtonAppearance)
          return theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg;
       case 'destructive':
          return theme.colors.dangerColor;
+      case 'text':
+         return 'transparent';
    }
 };

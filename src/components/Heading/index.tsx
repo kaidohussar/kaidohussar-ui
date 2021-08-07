@@ -2,9 +2,9 @@ import React from 'react';
 import {styled} from 'theming/defaultTheme';
 import {SizingOptions} from 'theming/types';
 
-type TextType = 'div' | 'span' | 'a' | 'p';
+type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
-export interface TextProps {
+export interface HeadingProps {
    /**
     * Title
     */
@@ -13,32 +13,26 @@ export interface TextProps {
    /**
     * Element type
     */
-   type: TextType;
+   type: HeadingType;
 
    /**
     * Element size
     */
    size: SizingOptions;
-
-   /**
-    * link to go to
-    */
-   href?: string;
 }
 
 /**
  * Component to display headings or text
  */
 
-const StyledText = styled.div.attrs(({type, href}: TextProps) => ({
+const StyledHeading = styled.h1.attrs(({type}: HeadingProps) => ({
    as: type, // change element type
-   href,
-}))<TextProps>`
+}))<HeadingProps>`
    color: ${({theme}) => (theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg)};
    font-size: ${({theme, size}) => theme.fontSizes[size]};
    font-family: ${({theme}) => theme.fontFamily};
 `;
 
-export const Text: React.FC<TextProps> = ({children, ...props}) => <StyledText {...props}>{children}</StyledText>;
+export const Heading: React.FC<HeadingProps> = ({children, ...props}) => <StyledHeading {...props}>{children}</StyledHeading>;
 
-Text.displayName = 'Text';
+Heading.displayName = 'Heading ';

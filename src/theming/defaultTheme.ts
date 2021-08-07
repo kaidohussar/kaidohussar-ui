@@ -72,6 +72,14 @@ export const deviceBreakpoints: {[key in SpacingOptions]: string} = {
    xxxl: `(min-width: ${breakpoints.xxxl})`,
 };
 
+const greyColors = {
+   grey100: 'grey',
+   grey200: 'grey',
+   grey300: 'grey',
+   grey400: 'grey',
+   grey500: 'grey',
+};
+
 const themeLight = {
    name: 'light',
 
@@ -84,9 +92,10 @@ const themeLight = {
 
       linkColor: 'blue',
       linkFocusedColor: 'darkblue',
+      ...greyColors,
    },
 
-   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+   fontFamily: 'arponasans, sans-serif;',
 
    uiSpeed,
 
@@ -109,6 +118,7 @@ const themeDark = {
 
       linkColor: '#FFFFFF',
       linkFocusedColor: '#FFFFFF',
+      ...greyColors,
    },
 
    fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',

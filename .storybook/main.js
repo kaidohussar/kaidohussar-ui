@@ -12,7 +12,12 @@ module.exports = {
       },
       extensions: ['.tsx', '.ts', '.js', '.jsx', '.mdx'],
    },
-   addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-addon-styled-component-theme/dist/preset'],
+   addons: [
+      '@storybook/addon-links',
+      '@storybook/addon-essentials',
+      'storybook-addon-styled-component-theme/dist/preset',
+      '@storybook/addon-knobs',
+   ],
    babel: (options) => ({
       ...options,
       plugins: ['babel-plugin-styled-components'],

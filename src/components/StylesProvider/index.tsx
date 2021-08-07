@@ -2,6 +2,7 @@ import React, {Dispatch, SetStateAction, createContext, useEffect, useState} fro
 import {ThemeProvider, createGlobalStyle} from 'styled-components';
 import {defaultThemes} from 'theming/defaultTheme';
 import {Theme} from 'theming/types';
+import {DeepPartial} from 'types/misc';
 
 export const StylesContext = createContext<{
    theme: string;
@@ -12,7 +13,7 @@ export const StylesContext = createContext<{
 });
 
 interface StylesProviderProps {
-   themes?: Array<Theme>;
+   customThemes?: DeepPartial<Theme>[];
    selectedTheme?: string;
 }
 
@@ -34,10 +35,29 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes = defaultThemes, selectedTheme}) => {
+export const StylesProvider: React.FC<StylesProviderProps> = ({children, customThemes = [], selectedTheme}) => {
+   const themesToUse = [...defaultThemes];
+
+   if (customThemes?.length) {
+      customThemes.forEach((customTheme, i) => {
+         // @ts-ignore
+         Object.entries(customTheme).forEach(([customThemeKey, customThemeValue]: [keyof Theme, Theme[unknown]]) => {
+            const t = themesToUse[i] as Theme;
+            const themeItem = t[customThemeKey];
+
+            if (typeof themeItem === 'object') {
+               t[customThemeKey] = {
+                  ...themeItem,
+                  ...customThemeValue,
+               };
+            }
+         });
+      });
+   }
+
    const savedTheme = window.localStorage.getItem('kaido-ui-theme') as string | null;
 
-   const [themeName, setTheme] = useState<string>(savedTheme || selectedTheme || defaultThemes[0].name);
+   const [themeName, setTheme] = useState<string>(savedTheme || selectedTheme || themesToUse[0].name);
 
    useEffect(() => {
       if (savedTheme !== themeName || savedTheme === null) {
@@ -46,7 +66,7 @@ export const StylesProvider: React.FC<StylesProviderProps> = ({children, themes 
    }, [savedTheme, themeName]);
 
    const findSelectedTheme = (themes: Theme[]) => themes.find((currentTheme) => currentTheme.name === themeName);
-   const activeTheme = findSelectedTheme(themes && themes.length > 0 ? themes : defaultThemes);
+   const activeTheme = findSelectedTheme(themesToUse);
 
    return (
       <StylesContext.Provider
