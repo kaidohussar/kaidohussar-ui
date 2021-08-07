@@ -1,6 +1,6 @@
 import {darken, lighten} from 'polished';
 import React, {ButtonHTMLAttributes} from 'react';
-import {styled} from 'theming/defaultTheme';
+import {styled} from 'theming';
 
 import {getButtonBackgroundColor, getButtonBorderColor, getButtonTextColor} from './utils';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {deviceBreakpoints, styled} from 'theming/defaultTheme';
+import {deviceBreakpoints, styled} from 'theming';
 import {Theme} from 'theming/types';
 
 type MaxWidth = 'small' | 'medium' | 'large';

@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from 'react';
-import {styled} from 'theming/defaultTheme';
+import {styled} from 'theming';
 
 import {Text} from '../Text';
 

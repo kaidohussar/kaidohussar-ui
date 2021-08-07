@@ -1,5 +1,5 @@
 import React from 'react';
-import {styled} from 'theming/defaultTheme';
+import {styled} from 'theming';
 import {SizingOptions} from 'theming/types';
 
 type TextType = 'div' | 'span' | 'a' | 'p';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {styled} from 'theming/defaultTheme';
+import {styled} from 'theming';
 import {FontWeightOptions, SizingOptions} from 'theming/types';
 
 type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {styled} from 'theming/defaultTheme';
+import {styled} from 'theming';
 import {ColorOptions, SizingOptions} from 'theming/types';
 
 import {svgs} from './svgs';

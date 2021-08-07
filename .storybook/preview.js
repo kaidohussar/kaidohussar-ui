@@ -2,7 +2,7 @@ import {addDecorator} from '@storybook/react';
 import {withThemesProvider} from 'storybook-addon-styled-component-theme';
 import {ThemeProvider} from 'styled-components';
 
-import {defaultThemes} from '../src/theming/defaultTheme';
+import {defaultThemes} from '../src/theming';
 
 export const parameters = {
    actions: {argTypesRegex: '^on[A-Z].*'},

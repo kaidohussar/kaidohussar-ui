@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, createContext, useEffect, useState} from 'react';
 import {ThemeProvider, createGlobalStyle} from 'styled-components';
-import {defaultThemes} from 'theming/defaultTheme';
+import {defaultThemes} from 'theming';
 import {Theme} from 'theming/types';
 import {DeepPartial} from 'types/misc';
 

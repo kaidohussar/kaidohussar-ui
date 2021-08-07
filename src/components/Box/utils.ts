@@ -1,4 +1,4 @@
-import {css, deviceBreakpoints} from 'theming/defaultTheme';
+import {css, deviceBreakpoints} from 'theming';
 import {SpacingOptions} from 'theming/types';
 
 import {BoxProps, FlexAlignmentType, FlexDirectionType, SpacingType} from './index';
