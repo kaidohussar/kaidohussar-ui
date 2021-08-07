@@ -30,3 +30,11 @@ export const Heading3 = () => (
 );
 
 Heading3.storyName = 'Heading3';
+
+export const LightFontWeight = () => (
+   <Heading size="xxxl" type="h1" weight="light">
+      Text here
+   </Heading>
+);
+
+LightFontWeight.storyName = 'LightFontWeight';
