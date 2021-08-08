@@ -84,7 +84,6 @@ const StyledAddon = styled.div`
 `;
 
 export const NavHeader: React.FC<NavHeaderProps> = ({alignment = 'right', navItems, addOn}) => {
-   console.log('navItems', navItems);
    return (
       <StyledNavHeader alignment={alignment} addOn={addOn}>
          <StyledNavItems alignment={alignment}>
