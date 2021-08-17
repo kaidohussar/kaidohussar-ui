@@ -1,12 +1,12 @@
 import {darken, lighten} from 'polished';
 import React, {ButtonHTMLAttributes} from 'react';
-import {styled} from 'theming';
+import {css, styled} from 'theming';
 
-import {getButtonBackgroundColor, getButtonBorderColor, getButtonTextColor} from './utils';
+import {getButtonBackgroundColor, getButtonBorderColor, getButtonSizeAttrs, getButtonTextColor} from './utils';
 
 export type ButtonAppearance = 'primary' | 'secondary' | 'destructive' | 'text';
 
-export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonSize = 'small' | 'medium' | 'large' | 'extra-large';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    /**
@@ -32,22 +32,25 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  */
 
 const StyledButton = styled.button<ButtonProps>`
-   background: ${({appearance, theme}) => getButtonBackgroundColor(theme, appearance)};
-   color: ${({appearance, theme}) => getButtonTextColor(theme, appearance)};
-
-   font-size: ${({theme}) => `${theme.fontSizes.sm}`};
    text-transform: uppercase;
    margin: 0;
-   padding: ${({theme, appearance}) => (appearance === 'text' ? '0px' : `${theme.spacing.xs} ${theme.spacing.md}`)};
-   border-radius: ${({theme}) => theme.defaultBorderRadius};
    border-width: 2px;
-   border-color: ${({appearance, theme}) => getButtonBorderColor(theme, appearance)};
-   height: ${({appearance}) => (appearance === 'text' ? 'auto' : '44px')};
    border-style: solid;
    cursor: pointer;
-   font-family: ${({theme}) => theme.fontFamily};
 
-   transition: all 0.2s;
+   ${({appearance, size, theme}) => {
+      return {
+         'border-radius': theme.defaultBorderRadius,
+         'font-family': theme.fontFamily,
+         padding: appearance === 'text' ? '0px' : `${theme.spacing.xs} ${theme.spacing.md}`,
+         'border-color': getButtonBorderColor(theme, appearance),
+         background: getButtonBackgroundColor(theme, appearance),
+         color: getButtonTextColor(theme, appearance),
+         'font-size': getButtonSizeAttrs(size || 'medium', theme),
+         transition: `all ${theme.uiSpeed}`,
+         height: appearance === 'text' ? 'auto' : '44px',
+      };
+   }}
 
    &:focus {
       outline: none;

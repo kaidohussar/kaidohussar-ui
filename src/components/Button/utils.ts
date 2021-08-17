@@ -1,7 +1,9 @@
 // Util func
 
-import {Theme} from '../../theming/types';
-import {ButtonAppearance} from './';
+import {css} from 'theming/defaultTheme';
+import {Theme} from 'theming/types';
+
+import {ButtonAppearance, ButtonSize} from './';
 
 export const getButtonBackgroundColor = (theme: Theme, appearance: ButtonAppearance) => {
    switch (appearance) {
@@ -38,5 +40,18 @@ export const getButtonBorderColor = (theme: Theme, appearance: ButtonAppearance)
          return theme.colors.dangerColor;
       case 'text':
          return 'transparent';
+   }
+};
+
+export const getButtonSizeAttrs = (size: ButtonSize, theme: Theme) => {
+   switch (size) {
+      case 'extra-large':
+         return theme.fontSizes.xl;
+      case 'large':
+         return theme.fontSizes.lg;
+      case 'medium':
+         return theme.fontSizes.md;
+      case 'small':
+         return theme.fontSizes.sm;
    }
 };

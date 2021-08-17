@@ -2,7 +2,7 @@ import React from 'react';
 import {styled} from 'theming';
 import {css} from 'theming/defaultTheme';
 
-import {Text} from 'components/Text';
+import {Button} from 'components/Button';
 
 interface NavItem {
    title: string;
@@ -31,7 +31,13 @@ export interface NavHeaderProps {
 
 const StyledNavHeader = styled.div<Pick<NavHeaderProps, 'alignment' | 'addOn'>>`
    display: flex;
-   ${({alignment}) => {
+
+   ${({theme}) => {
+      return css`
+         padding: ${theme.spacing.lg} 0;
+      `;
+   }}
+   ${({alignment, theme}) => {
       if (alignment === 'right') {
          return css`
             justify-content: flex-end;
@@ -60,13 +66,13 @@ const StyledNavItems = styled.div<Pick<NavHeaderProps, 'alignment'>>`
    ${({alignment, theme}) => {
       if (alignment === 'right') {
          return css`
-            a {
+            button {
                margin-left: ${theme.spacing.lg};
             }
          `;
       } else {
          return css`
-            a {
+            button {
                margin-right: ${theme.spacing.lg};
             }
          `;
@@ -75,7 +81,26 @@ const StyledNavItems = styled.div<Pick<NavHeaderProps, 'alignment'>>`
 `;
 
 const StyledNavItem = styled.div<{active?: boolean}>`
-   font-weight: ${({theme, active}) => active && theme.fontWeights.semibold};
+   ${({theme, active}) =>
+      active &&
+      css`
+         font-weight: ${theme.fontWeights.semibold};
+
+         button::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            background: ${theme.colors.accentColor};
+         }
+      `};
+
+   button {
+      position: relative;
+      text-transform: capitalize;
+   }
 `;
 
 const StyledAddon = styled.div`
@@ -88,10 +113,10 @@ export const NavHeader: React.FC<NavHeaderProps> = ({alignment = 'right', navIte
       <StyledNavHeader alignment={alignment} addOn={addOn}>
          <StyledNavItems alignment={alignment}>
             {navItems.map((item, index) => (
-               <StyledNavItem active={item.active}>
-                  <Text key={index} type="a" size="xl" href="">
+               <StyledNavItem key={index} active={item.active}>
+                  <Button size="large" appearance="text">
                      {item.title}
-                  </Text>
+                  </Button>
                </StyledNavItem>
             ))}
          </StyledNavItems>
