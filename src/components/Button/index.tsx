@@ -1,5 +1,5 @@
 import {darken, lighten} from 'polished';
-import React, {ButtonHTMLAttributes} from 'react';
+import React, {ButtonHTMLAttributes, ChangeEvent} from 'react';
 import {css, styled} from 'theming';
 
 import {getButtonBackgroundColor, getButtonBorderColor, getButtonSizeAttrs, getButtonTextColor} from './utils';
@@ -24,7 +24,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    /**
     * Optional click handler
     */
-   onClick?: () => void;
+   onClick?: (e: ChangeEvent<EventTarget>) => void;
 }
 
 /**

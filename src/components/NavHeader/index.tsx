@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {styled} from 'theming';
 import {css} from 'theming/defaultTheme';
 
@@ -6,7 +6,7 @@ import {Button} from 'components/Button';
 
 interface NavItem {
    title: string;
-   onClick: () => void;
+   onClick: (e: ChangeEvent<EventTarget>) => void;
    active?: boolean;
 }
 
@@ -114,7 +114,13 @@ export const NavHeader: React.FC<NavHeaderProps> = ({alignment = 'right', navIte
          <StyledNavItems alignment={alignment}>
             {navItems.map((item, index) => (
                <StyledNavItem key={index} active={item.active}>
-                  <Button size="large" appearance="text">
+                  <Button
+                     onClick={(e) => {
+                        item.onClick(e);
+                     }}
+                     size="large"
+                     appearance="text"
+                  >
                      {item.title}
                   </Button>
                </StyledNavItem>

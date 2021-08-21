@@ -23,14 +23,8 @@ const StyledFrame = styled.div<FrameProps>`
    background: ${({backgroundColor, theme}) => (backgroundColor ? theme.colors[backgroundColor] : theme.colors.backgroundColor)};
    min-height: 100vh;
    min-width: 100vh;
-
-   main {
-      display: flex;
-      flex-direction: column;
-      max-width: ${({maxWidth, theme}) => getMaxWidth(maxWidth, theme)};
-      padding: ${({theme}) => `0 ${theme.spacing.lg}`};
-      margin: 0 auto;
-   }
+   display: flex;
+   flex-direction: column;
 
    @media only screen and ${deviceBreakpoints.md} {
       padding: ${({theme}) => `0 ${theme.spacing.md}`};
@@ -39,6 +33,16 @@ const StyledFrame = styled.div<FrameProps>`
    @media only screen and ${deviceBreakpoints.sm} {
       padding: ${({theme}) => `0 ${theme.spacing.sm}`};
    }
+`;
+
+const StyledMain = styled.main<{maxWidth: FrameProps['maxWidth']}>`
+   display: flex;
+   flex-direction: column;
+   max-width: ${({maxWidth, theme}) => getMaxWidth(maxWidth, theme)};
+   padding: ${({theme}) => `0 ${theme.spacing.lg}`};
+   margin: 0 auto;
+   height: 100vh;
+   width: 100%;
 `;
 
 const getMaxWidth = (maxWidth: MaxWidth, theme: Theme) => {
@@ -54,7 +58,7 @@ const getMaxWidth = (maxWidth: MaxWidth, theme: Theme) => {
 
 export const Frame: React.FC<FrameProps> = ({children, maxWidth, backgroundColor}) => (
    <StyledFrame maxWidth={maxWidth} backgroundColor={backgroundColor}>
-      <main>{children}</main>
+      <StyledMain maxWidth={maxWidth}>{children}</StyledMain>
    </StyledFrame>
 );
 
