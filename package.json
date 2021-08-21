@@ -1,6 +1,6 @@
 {
   "name": "kaidohussar-ui",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "UI library by Kaido Hussar",
   "main": "dist/index.js",
   "scripts": {
