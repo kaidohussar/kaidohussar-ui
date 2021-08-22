@@ -23,4 +23,5 @@ module.exports = {
       ...options,
       plugins: ['babel-plugin-styled-components'],
    }),
+   watch: true,
 };

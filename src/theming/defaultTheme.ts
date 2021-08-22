@@ -31,11 +31,11 @@ const spacing = {
 const fontSizes = {
    xs: '12px',
    sm: '14px',
-   md: '16px',
-   lg: '18px',
-   xl: '24px',
-   xxl: '32px',
-   xxxl: '48px',
+   md: '18px',
+   lg: '24px',
+   xl: '32px',
+   xxl: '48px',
+   xxxl: '64px',
 };
 
 const fontWeights = {
@@ -125,7 +125,7 @@ const themeDark = {
       ...greyColors,
    },
 
-   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+   fontFamily: 'arponasans, sans-serif;',
 
    uiSpeed,
 

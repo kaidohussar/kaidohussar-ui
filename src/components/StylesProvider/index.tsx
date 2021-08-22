@@ -25,9 +25,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+     margin: 0;
+     -webkit-font-smoothing: antialiased;
+     text-rendering: optimizeLegibility;
+     font-family: arponasans, sans-serif;
   }
   
   h1, h2, h3, h4, h5, p {

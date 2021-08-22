@@ -22,7 +22,7 @@ export interface FrameProps {
 const StyledFrame = styled.div<FrameProps>`
    background: ${({backgroundColor, theme}) => (backgroundColor ? theme.colors[backgroundColor] : theme.colors.backgroundColor)};
    min-height: 100vh;
-   min-width: 100vh;
+   min-width: 100%;
    display: flex;
    flex-direction: column;
 

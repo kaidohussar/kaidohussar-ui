@@ -1,6 +1,6 @@
-import React from 'react';
-import {styled} from 'theming';
-import {SpacingOptions} from 'theming/types';
+import React, {CSSProperties} from 'react';
+import {css, styled} from 'theming';
+import {SpacingOptions, Theme} from 'theming/types';
 
 import {
    displayFlexAlignmentPropertiesByBreakpoint,
@@ -16,6 +16,8 @@ export type FlexAlignmentType = Partial<{[key in SpacingOptions]: FlexAlignmentO
 export type FlexDirectionType = Partial<{[key in SpacingOptions]: FlexDirectionOptions}> | FlexDirectionOptions;
 
 export type SpacingType = Partial<{[key in SpacingOptions]: SpacingOptions}> | SpacingOptions;
+
+type MaxWidth = 'small' | 'medium' | 'large';
 
 export interface BoxProps {
    /**
@@ -36,13 +38,38 @@ export interface BoxProps {
    right?: SpacingType;
    bottom?: SpacingType;
    left?: SpacingType;
+
+   /**
+    * Max container width
+    */
+   maxWidth?: MaxWidth;
+
+   /**
+    * Extra CSS props
+    */
+   cssProps?: CSSProperties;
 }
 
 /**
  * Box component for basic alignment and spacing
  */
 
+const getMaxWidth = (maxWidth: MaxWidth, theme: Theme) => {
+   switch (maxWidth) {
+      case 'small':
+         return `${theme.spacing.gridunit * 100}px`;
+      case 'medium':
+         return `${theme.spacing.gridunit * 144}px`;
+      case 'large':
+         return `${theme.spacing.gridunit * 192}px`;
+   }
+};
+
 const StyledBox = styled.div<BoxProps>`
+   > * {
+      margin: 0;
+   }
+
    display: flex;
    ${({flexDirection}) => flexDirection && displayFlexDirectionPropertiesByBreakpoint(flexDirection)};
 
@@ -54,13 +81,22 @@ const StyledBox = styled.div<BoxProps>`
    ${({bottom}) => bottom && displaySpacingPropertiesByBreakpoint('bottom', bottom)};
    ${({left}) => left && displaySpacingPropertiesByBreakpoint('left', left)};
 
-   > * {
-      margin: 0;
-   }
+   ${({maxWidth, theme}) => {
+      if (!maxWidth) {
+         return '';
+      }
+
+      return css`
+         max-width: ${getMaxWidth(maxWidth, theme)};
+         width: 100%;
+      `;
+   }};
 
    &:first-child:not(:only-child) {
       margin-top: 0;
    }
+
+   ${({cssProps}) => cssProps && {...cssProps}};
 `;
 
 export const Box: React.FC<BoxProps> = ({children, ...props}) => <StyledBox {...props}>{children}</StyledBox>;
