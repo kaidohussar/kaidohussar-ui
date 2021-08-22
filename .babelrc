@@ -14,7 +14,7 @@
         "ssr": true,
         "displayName": true,
         "preprocess": false,
-        "minify": false
+        "minify": true
       }
     ]
   ]
