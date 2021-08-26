@@ -89,7 +89,7 @@ const StyledNavItem = styled.div<{active?: boolean}>`
          button::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -5px;
             width: 100%;
             height: 2px;
             left: 0;

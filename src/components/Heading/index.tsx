@@ -35,7 +35,10 @@ const StyledHeading = styled.h1.attrs(({type}: HeadingProps) => ({
 }))<HeadingProps>`
    color: ${({theme}) => (theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg)};
    font-size: ${({theme, size}) => theme.fontSizes[size]};
-   font-family: ${({theme}) => theme.fontFamily};
+   font-family: ${({theme}) => {
+      console.log('theme', theme);
+      return theme.fontFamily;
+   }};
    font-weight: ${({theme, weight}) => (weight ? theme.fontWeights[weight] : theme.fontWeights.regular)};
 `;
 

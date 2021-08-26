@@ -28,7 +28,6 @@ const GlobalStyle = createGlobalStyle`
      margin: 0;
      -webkit-font-smoothing: antialiased;
      text-rendering: optimizeLegibility;
-     font-family: arponasans, sans-serif;
   }
   
   h1, h2, h3, h4, h5, p {
@@ -46,6 +45,10 @@ export const StylesProvider: React.FC<StylesProviderProps> = ({children, customT
             const t = themesToUse[i] as Theme;
             const themeItem = t[customThemeKey];
 
+            if (typeof themeItem === 'string') {
+               t[customThemeKey] = customThemeValue;
+            }
+
             if (typeof themeItem === 'object') {
                t[customThemeKey] = {
                   ...themeItem,
@@ -57,7 +60,6 @@ export const StylesProvider: React.FC<StylesProviderProps> = ({children, customT
    }
 
    const savedTheme = window.localStorage.getItem('kaido-ui-theme') as string | null;
-
    const [themeName, setTheme] = useState<string>(savedTheme || selectedTheme || themesToUse[0].name);
 
    useEffect(() => {
