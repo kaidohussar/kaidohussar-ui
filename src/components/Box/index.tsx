@@ -92,10 +92,6 @@ const StyledBox = styled.div<BoxProps>`
       `;
    }};
 
-   &:first-child:not(:only-child) {
-      margin-top: 0;
-   }
-
    ${({cssProps}) => cssProps && {...cssProps}};
 `;
 
