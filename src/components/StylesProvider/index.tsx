@@ -66,6 +66,8 @@ export const StylesProvider: React.FC<StylesProviderProps> = ({children, customT
       if (savedTheme !== themeName || savedTheme === null) {
          window.localStorage.setItem('kaido-ui-theme', themeName);
       }
+
+      document.getElementsByTagName('html')[0].setAttribute('data-kh-theme', themeName);
    }, [savedTheme, themeName]);
 
    const findSelectedTheme = (themes: Theme[]) => themes.find((currentTheme) => currentTheme.name === themeName);
