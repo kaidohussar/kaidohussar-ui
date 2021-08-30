@@ -66,10 +66,6 @@ const getMaxWidth = (maxWidth: MaxWidth, theme: Theme) => {
 };
 
 const StyledBox = styled.div<BoxProps>`
-   > * {
-      margin: 0;
-   }
-
    display: flex;
    ${({flexDirection}) => flexDirection && displayFlexDirectionPropertiesByBreakpoint(flexDirection)};
 
