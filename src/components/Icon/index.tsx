@@ -37,9 +37,10 @@ export interface IconProps {
  * Icon component
  */
 
-const StyledIcon = styled.div.attrs(({href, target}: IconProps) => ({
+const StyledIcon = styled.div.attrs(({href, target, type}: IconProps) => ({
    as: href && 'a',
-   ...(href ? {target: target || '_self'} : {}),
+   name: type,
+   ...(href ? {target: target || '_self', rel: 'noopener'} : {}),
 }))<IconProps>`
    display: block;
    width: ${({theme, size}) => theme.fontSizes[size]};
@@ -58,7 +59,7 @@ const StyledIcon = styled.div.attrs(({href, target}: IconProps) => ({
 `;
 
 export const Icon: React.FC<IconProps> = ({type, size, color, ...props}) => (
-   <StyledIcon size={size} color={color} {...props}>
+   <StyledIcon size={size} color={color} type={type} {...props}>
       {svgs(type)}
    </StyledIcon>
 );

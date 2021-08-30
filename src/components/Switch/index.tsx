@@ -102,6 +102,7 @@ export const Switch: React.FC<SwitchProps> = ({isToggled, handleToggle, labels})
                checked={typeof isToggled === 'boolean' ? isToggled : undefined}
                onChange={(event: ChangeEvent<HTMLInputElement>) => handleToggle(event)}
                id={uniqueId}
+               name={uniqueId}
                type="checkbox"
             />
 
