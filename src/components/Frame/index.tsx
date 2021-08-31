@@ -21,8 +21,8 @@ export interface FrameProps {
 
 const StyledFrame = styled.div<FrameProps>`
    background: ${({backgroundColor, theme}) => (backgroundColor ? theme.colors[backgroundColor] : theme.colors.backgroundColor)};
-   min-height: 100vh;
-   min-width: 100%;
+   height: 100vh;
+   width: 100%;
    display: flex;
    flex-direction: column;
 
@@ -41,8 +41,8 @@ const StyledMain = styled.main<{maxWidth: FrameProps['maxWidth']}>`
    max-width: ${({maxWidth, theme}) => getMaxWidth(maxWidth, theme)};
    padding: ${({theme}) => `0 ${theme.spacing.lg}`};
    margin: 0 auto;
-   height: 100vh;
    width: 100%;
+   height: 100%;
 `;
 
 const getMaxWidth = (maxWidth: MaxWidth, theme: Theme) => {

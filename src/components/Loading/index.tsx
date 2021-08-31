@@ -1,4 +1,7 @@
 import React from 'react';
+import {css, styled} from 'theming/defaultTheme';
+
+import {NavHeaderProps} from 'components/NavHeader';
 
 import {StyledSpinner} from './styled';
 
@@ -10,10 +13,20 @@ export interface LoadingProps {
  * Loading
  */
 
+const StyledPath = styled.path`
+   display: flex;
+   font-weight: ${({theme}) => theme.fontWeights.light};
+
+   ${({theme}) =>
+      css`
+         fill: ${theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg};
+      `}
+`;
+
 export const Loading = (props: LoadingProps) => (
    <StyledSpinner {...props}>
       <svg xmlns="http://www.w3.org/2000/svg" width="191px" height="191px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-         <path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#1a1a1a" stroke="none">
+         <StyledPath d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" stroke="none">
             <animateTransform
                attributeName="transform"
                type="rotate"
@@ -22,7 +35,7 @@ export const Loading = (props: LoadingProps) => (
                keyTimes="0;1"
                values="0 50 51;360 50 51"
             />
-         </path>
+         </StyledPath>
       </svg>
    </StyledSpinner>
 );

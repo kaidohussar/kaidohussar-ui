@@ -40,6 +40,7 @@ export interface IconProps {
 const StyledIcon = styled.div.attrs(({href, target, type}: IconProps) => ({
    as: href && 'a',
    name: type,
+   'aria-label': type,
    ...(href ? {target: target || '_self', rel: 'noopener'} : {}),
 }))<IconProps>`
    display: block;
