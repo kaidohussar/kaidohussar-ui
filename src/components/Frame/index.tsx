@@ -25,6 +25,7 @@ const StyledFrame = styled.div<FrameProps>`
    width: 100%;
    display: flex;
    flex-direction: column;
+   overflow: auto;
 
    @media only screen and ${deviceBreakpoints.md} {
       padding: ${({theme}) => `0 ${theme.spacing.md}`};
