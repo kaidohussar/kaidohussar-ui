@@ -62,6 +62,12 @@ const breakpoints = {
    xxxl: `${BASE * 400}px`,
 };
 
+const lineHeights = {
+   sm: 1.4,
+   md: 1.6,
+   lg: 1.8,
+};
+
 export const deviceBreakpoints: {[key in SpacingOptions]: string} = {
    xs: `(min-width: ${breakpoints.xs})`,
    sm: `(min-width: ${breakpoints.sm})`,
@@ -101,6 +107,7 @@ const themeLight = {
 
    uiSpeed,
 
+   lineHeights,
    breakpoints,
    fontWeights,
    fontSizes,
@@ -129,6 +136,7 @@ const themeDark = {
 
    uiSpeed,
 
+   lineHeights,
    breakpoints,
    fontWeights,
    fontSizes,

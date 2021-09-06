@@ -1,6 +1,6 @@
 import React from 'react';
 import {styled} from 'theming';
-import {FontWeightOptions, SizingOptions} from 'theming/types';
+import {FontWeightOptions, LineHeightOptions, SizingOptions} from 'theming/types';
 
 type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
@@ -24,6 +24,11 @@ export interface HeadingProps {
     * Weight
     */
    weight?: FontWeightOptions;
+
+   /**
+    * Line height
+    */
+   lineHeight?: LineHeightOptions;
 }
 
 /**
@@ -37,6 +42,7 @@ const StyledHeading = styled.h1.attrs(({type}: HeadingProps) => ({
    font-size: ${({theme, size}) => theme.fontSizes[size]};
    font-family: ${({theme}) => theme.fontFamily};
    font-weight: ${({theme, weight}) => (weight ? theme.fontWeights[weight] : theme.fontWeights.regular)};
+   line-height: ${({theme, lineHeight = 'sm'}) => theme.lineHeights[lineHeight]};
 `;
 
 export const Heading: React.FC<HeadingProps> = ({children, ...props}) => <StyledHeading {...props}>{children}</StyledHeading>;
