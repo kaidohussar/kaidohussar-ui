@@ -1,3 +1,4 @@
+import {goToSmallerSize} from 'helpers/utils';
 import React from 'react';
 import {styled} from 'theming';
 import {breakpoints} from 'theming/defaultTheme';
@@ -36,28 +37,13 @@ export interface HeadingProps {
  * Component to display headings or text
  */
 
-const findSmallerHeadingSize = (theme: Theme, size: SizingOptions) => {
-   switch (size) {
-      case 'xxxl':
-         return theme.fontSizes['xl'];
-      case 'xxl':
-      case 'xl':
-         return theme.fontSizes['lg'];
-      case 'lg':
-      case 'md':
-         return theme.fontSizes['sm'];
-      default:
-         return theme.fontSizes[size];
-   }
-};
-
 const StyledHeading = styled.h1.attrs(({type}: HeadingProps) => ({
    as: type, // change element type
 }))<HeadingProps>`
    --heading-size: ${({theme, size}) => theme.fontSizes[size]};
 
    @media only screen and (max-width: ${breakpoints.lg}) {
-      --heading-size: ${({theme, size}) => findSmallerHeadingSize(theme, size)};
+      --heading-size: ${({theme, size}) => goToSmallerSize(theme, size)};
    }
 
    color: ${({theme}) => (theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg)};

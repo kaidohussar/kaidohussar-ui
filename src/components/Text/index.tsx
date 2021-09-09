@@ -1,5 +1,7 @@
+import {goToSmallerSize} from 'helpers/utils';
 import React from 'react';
 import {css, styled} from 'theming';
+import {breakpoints} from 'theming/defaultTheme';
 import {SizingOptions} from 'theming/types';
 
 type TextType = 'div' | 'span' | 'a' | 'p';
@@ -35,8 +37,16 @@ const StyledText = styled.div.attrs(({type, href}: TextProps) => ({
    href,
 }))<TextProps>`
    color: ${({theme}) => (theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg)};
-   font-size: ${({theme, size}) => theme.fontSizes[size]};
    font-family: ${({theme}) => theme.fontFamily};
+
+   --text-size: ${({theme, size}) => theme.fontSizes[size]};
+
+   @media only screen and (max-width: ${breakpoints.lg}) {
+      --text-size: ${({theme, size}) => goToSmallerSize(theme, size)};
+   }
+
+   font-size: var(--text-size);
+
    ${({size}) => {
       switch (size) {
          case 'xs':
