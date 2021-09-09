@@ -87,8 +87,6 @@ const StyledNavItem = styled.div<{active?: boolean}>`
          font-weight: ${theme.fontWeights.semibold};
 
          button {
-            padding-bottom: 2px;
-
             &::after {
                content: '';
                position: absolute;
@@ -104,6 +102,7 @@ const StyledNavItem = styled.div<{active?: boolean}>`
    button {
       position: relative;
       text-transform: capitalize;
+      padding-bottom: 2px;
    }
 `;
 
