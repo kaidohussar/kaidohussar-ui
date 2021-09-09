@@ -1,5 +1,5 @@
 import React from 'react';
-import {deviceBreakpoints, styled} from 'theming';
+import {css, deviceBreakpoints, styled} from 'theming';
 import {ColorOptions, Theme} from 'theming/types';
 
 type MaxWidth = 'small' | 'medium' | 'large';
@@ -44,6 +44,14 @@ const StyledMain = styled.main<{maxWidth: FrameProps['maxWidth']}>`
    margin: 0 auto;
    width: 100%;
    height: 100%;
+
+   ${({theme}) => {
+      return css`
+         @media only screen and (max-width: ${theme.breakpoints['md']}) {
+            padding: 0 ${theme.spacing.md};
+         }
+      `;
+   }};
 `;
 
 const getMaxWidth = (maxWidth: MaxWidth, theme: Theme) => {
