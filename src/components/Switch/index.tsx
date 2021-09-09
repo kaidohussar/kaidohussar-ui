@@ -76,11 +76,19 @@ const Wrapper = styled.div`
    display: flex;
    align-items: center;
 
-   ${({theme}) => css`
-      font-family: ${theme.fontFamily};
-      font-weight: ${theme.fontWeights.regular};
-      color: ${theme.colors.textColor};
-   `};
+   ${({theme}) => {
+      console.log("${theme.breakpoints['md']", theme.breakpoints['md']);
+      return css`
+         font-family: ${theme.fontFamily};
+         font-weight: ${theme.fontWeights.regular};
+         color: ${theme.colors.textColor};
+         @media only screen and (max-width: ${theme.breakpoints['md']}) {
+            span {
+               display: none;
+            }
+         }
+      `;
+   }}
 
    > *:not(:last-child) {
       margin-right: 1rem;
@@ -93,7 +101,7 @@ export const Switch: React.FC<SwitchProps> = ({isToggled, handleToggle, labels})
    return (
       <Wrapper>
          {labels && (
-            <Text type="div" size="sm">
+            <Text type="span" size="sm">
                {labels.left}
             </Text>
          )}
@@ -109,7 +117,7 @@ export const Switch: React.FC<SwitchProps> = ({isToggled, handleToggle, labels})
             <CheckBoxLabel htmlFor={uniqueId} />
          </CheckBoxWrapper>
          {labels && (
-            <Text type="div" size="sm">
+            <Text type="span" size="sm">
                {labels.right}
             </Text>
          )}

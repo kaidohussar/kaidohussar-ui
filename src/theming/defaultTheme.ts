@@ -52,7 +52,7 @@ const fontWeights = {
 const uiSpeed = '0.2s';
 const BASE = 4;
 
-const breakpoints = {
+export const breakpoints = {
    xs: '0px',
    sm: `${BASE * 144}px`,
    md: `${BASE * 192}px`,

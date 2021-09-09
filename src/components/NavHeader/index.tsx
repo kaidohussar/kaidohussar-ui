@@ -86,14 +86,18 @@ const StyledNavItem = styled.div<{active?: boolean}>`
       css`
          font-weight: ${theme.fontWeights.semibold};
 
-         button::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            width: 100%;
-            height: 2px;
-            left: 0;
-            background: ${theme.colors.accentColor};
+         button {
+            padding-bottom: 2px;
+
+            &::after {
+               content: '';
+               position: absolute;
+               bottom: -5px;
+               width: 100%;
+               height: 2px;
+               left: 0;
+               background: ${theme.colors.accentColor};
+            }
          }
       `};
 

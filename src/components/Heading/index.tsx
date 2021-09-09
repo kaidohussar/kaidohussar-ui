@@ -1,6 +1,7 @@
 import React from 'react';
 import {styled} from 'theming';
-import {FontWeightOptions, LineHeightOptions, SizingOptions} from 'theming/types';
+import {breakpoints} from 'theming/defaultTheme';
+import {FontWeightOptions, LineHeightOptions, SizingOptions, Theme} from 'theming/types';
 
 type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
@@ -35,11 +36,32 @@ export interface HeadingProps {
  * Component to display headings or text
  */
 
+const findSmallerHeadingSize = (theme: Theme, size: SizingOptions) => {
+   switch (size) {
+      case 'xxxl':
+         return theme.fontSizes['xl'];
+      case 'xxl':
+      case 'xl':
+         return theme.fontSizes['lg'];
+      case 'lg':
+      case 'md':
+         return theme.fontSizes['sm'];
+      default:
+         return theme.fontSizes[size];
+   }
+};
+
 const StyledHeading = styled.h1.attrs(({type}: HeadingProps) => ({
    as: type, // change element type
 }))<HeadingProps>`
+   --heading-size: ${({theme, size}) => theme.fontSizes[size]};
+
+   @media only screen and (max-width: ${breakpoints.lg}) {
+      --heading-size: ${({theme, size}) => findSmallerHeadingSize(theme, size)};
+   }
+
    color: ${({theme}) => (theme.name === 'light' ? theme.colors.textColorLightBg : theme.colors.textColorDarkBg)};
-   font-size: ${({theme, size}) => theme.fontSizes[size]};
+   font-size: var(--heading-size);
    font-family: ${({theme}) => theme.fontFamily};
    font-weight: ${({theme, weight}) => (weight ? theme.fontWeights[weight] : theme.fontWeights.regular)};
    line-height: ${({theme, lineHeight = 'sm'}) => theme.lineHeights[lineHeight]};
