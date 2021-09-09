@@ -21,9 +21,9 @@ export interface FrameProps {
 
 const StyledFrame = styled.div<FrameProps>`
    background: ${({backgroundColor, theme}) => (backgroundColor ? theme.colors[backgroundColor] : theme.colors.backgroundColor)};
-   height: 100vh;
    width: 100%;
    display: flex;
+   flex: 1;
    flex-direction: column;
    overflow: auto;
 

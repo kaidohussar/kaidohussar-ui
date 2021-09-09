@@ -1,4 +1,4 @@
-import {goToSmallerSize} from 'helpers/utils';
+import {goToSmallerTextSize} from 'helpers/utils';
 import React from 'react';
 import {css, styled} from 'theming';
 import {breakpoints} from 'theming/defaultTheme';
@@ -42,7 +42,7 @@ const StyledText = styled.div.attrs(({type, href}: TextProps) => ({
    --text-size: ${({theme, size}) => theme.fontSizes[size]};
 
    @media only screen and (max-width: ${breakpoints.lg}) {
-      --text-size: ${({theme, size}) => goToSmallerSize(theme, size)};
+      --text-size: ${({theme, size}) => goToSmallerTextSize(theme, size)};
    }
 
    font-size: var(--text-size);
