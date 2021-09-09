@@ -1,6 +1,5 @@
 import {readableColor} from 'polished';
-
-import {SizingOptions, Theme} from '../theming/types';
+import {SizingOptions, Theme} from 'theming/types';
 
 export const readAbleColor = (theme: Theme) =>
    readableColor(theme.colors.textColorLightBg, theme.colors.textColorDarkBg, theme.colors.textColorLightBg);
@@ -8,7 +7,7 @@ export const readAbleColor = (theme: Theme) =>
 export const goToSmallerSize = (theme: Theme, size: SizingOptions) => {
    switch (size) {
       case 'xxxl':
-         return theme.fontSizes['xl'];
+         return theme.fontSizes['xxl'];
       case 'xxl':
          return theme.fontSizes['xl'];
       case 'xl':
