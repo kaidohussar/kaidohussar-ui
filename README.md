@@ -78,7 +78,7 @@ import { Button } from 'kaidohussar/ui';
 <Button>Click me</Button>
 ```
 
-### Themeing
+### Theming
 Theming is as easy as it can be
 
 #### Wrap your application with StylesProvider

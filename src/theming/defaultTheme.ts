@@ -21,7 +21,7 @@ const spacing = {
    xxs: `${baseUnit / 4}px`,
    xs: `${baseUnit / 2}px`,
    sm: `${baseUnit}px`,
-   md: `${baseUnit * 2}px`,
+   md: `${baseUnit * 3}px`,
    lg: `${baseUnit * 4}px`,
    xl: `${baseUnit * 8}px`,
    xxl: `${baseUnit * 16}px`,

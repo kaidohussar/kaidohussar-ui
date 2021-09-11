@@ -51,7 +51,7 @@ const StyledMain = styled.main<{maxWidth: FrameProps['maxWidth']}>`
             padding: 0 ${theme.spacing.md};
          }
       `;
-   }};
+   }}
 `;
 
 const getMaxWidth = (maxWidth: MaxWidth, theme: Theme) => {

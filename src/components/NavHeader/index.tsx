@@ -37,16 +37,10 @@ const StyledNavHeader = styled.div<Pick<NavHeaderProps, 'alignment' | 'addOn'>>`
          padding: ${theme.spacing.lg} 0;
       `;
    }}
-   ${({alignment, theme}) => {
-      if (alignment === 'right') {
-         return css`
-            justify-content: flex-end;
-         `;
-      } else {
-         return css`
-            justify-content: flex-start;
-         `;
-      }
+   ${({alignment}) => {
+      return css`
+         justify-content: ${alignment === 'right' ? 'flex-end' : 'flex-start'};
+      `;
    }}
 
    ${({addOn, alignment}) => {
