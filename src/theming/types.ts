@@ -2,7 +2,7 @@ interface Spacing extends DefaultSpacings {
    gridunit: number;
 }
 
-export type LineHeightOptions = 'sm' | 'md' | 'lg';
+export type LineHeightOptions = 'xs' | 'sm' | 'md' | 'lg';
 export type SpacingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 export type SizingOptions = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 export type FontWeightOptions = 'thin' | 'extralight' | 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'extrabold';

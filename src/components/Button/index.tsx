@@ -38,19 +38,17 @@ const StyledButton = styled.button<ButtonProps>`
    border-style: solid;
    cursor: pointer;
 
-   ${({appearance, size, theme}) => {
-      return {
-         'border-radius': theme.defaultBorderRadius,
-         'font-family': theme.fontFamily,
-         padding: appearance === 'text' ? '0px' : `${theme.spacing.xs} ${theme.spacing.md}`,
-         'border-color': getButtonBorderColor(theme, appearance),
-         background: getButtonBackgroundColor(theme, appearance),
-         color: getButtonTextColor(theme, appearance),
-         'font-size': getButtonSizeAttrs(size || 'medium', theme),
-         transition: `all ${theme.uiSpeed}`,
-         height: appearance === 'text' ? 'auto' : '44px',
-      };
-   }}
+   ${({appearance, size, theme}) => ({
+      'border-radius': theme.defaultBorderRadius,
+      'font-family': theme.fontFamily,
+      padding: appearance === 'text' ? '0px' : `${theme.spacing.xs} ${theme.spacing.md}`,
+      'border-color': getButtonBorderColor(theme, appearance),
+      background: getButtonBackgroundColor(theme, appearance),
+      color: getButtonTextColor(theme, appearance),
+      'font-size': getButtonSizeAttrs(size || 'medium', theme),
+      transition: `all ${theme.uiSpeed}`,
+      height: appearance === 'text' ? 'auto' : '44px',
+   })}
 
    &:focus {
       outline: none;

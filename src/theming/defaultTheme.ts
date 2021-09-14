@@ -63,6 +63,7 @@ export const breakpoints = {
 };
 
 const lineHeights = {
+   xs: 1.2,
    sm: 1.4,
    md: 1.6,
    lg: 1.8,

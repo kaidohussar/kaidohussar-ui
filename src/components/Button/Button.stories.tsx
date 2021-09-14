@@ -1,17 +1,17 @@
-import {action} from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions';
 import React from 'react';
 
-import {Button} from './';
+import { Button } from '.';
 
 export default {
-   component: Button,
-   title: 'Components/Button',
+  component: Button,
+  title: 'Components/Button',
 };
 
 export const Primary = () => (
-   <Button onClick={action('clicked')} appearance="primary">
-      Primary button
-   </Button>
+  <Button onClick={action('clicked')} appearance="primary">
+    Primary button
+  </Button>
 );
 
 Primary.storyName = 'Primary button';

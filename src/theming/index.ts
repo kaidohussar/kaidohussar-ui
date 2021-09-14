@@ -1,1 +1,3 @@
-export {defaultThemes, deviceBreakpoints, styled, css} from './defaultTheme';
+export {
+  defaultThemes, deviceBreakpoints, styled, css,
+} from './defaultTheme';

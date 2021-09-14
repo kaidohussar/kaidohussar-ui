@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {Loading} from './';
+import { Loading } from '.';
 
 export default {
-   component: Loading,
-   title: 'Components/Loading',
+  component: Loading,
+  title: 'Components/Loading',
 };
 
 export const Default = () => <Loading />;
