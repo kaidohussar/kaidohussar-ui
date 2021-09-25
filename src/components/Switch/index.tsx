@@ -1,8 +1,8 @@
-import React, { ChangeEvent } from 'react';
-import { styled } from 'theming';
-import { css } from 'theming/defaultTheme';
+import React, {ChangeEvent} from 'react';
+import {styled} from 'theming';
+import {css} from 'theming/defaultTheme';
 
-import { Text } from '../Text';
+import {Text} from '../Text';
 
 export interface SwitchProps {
    /**
@@ -49,7 +49,7 @@ const CheckBoxLabel = styled.label`
       height: 24px;
       border-radius: 45px;
       transition: 0.2s;
-      background: ${({ theme }) => theme.colors.accentColor};
+      background: ${({theme}) => theme.colors.accentColor};
    }
 `;
 const Input = styled.input`
@@ -59,7 +59,7 @@ const Input = styled.input`
    width: 40px;
    height: 16px;
    margin: 0;
-   background: ${({ theme }) => theme.colors.grey100};
+   background: ${({theme}) => theme.colors.grey100};
    &:checked + ${CheckBoxLabel} {
       &::after {
          content: '';
@@ -75,10 +75,11 @@ const Input = styled.input`
 const Wrapper = styled.div`
    display: flex;
    align-items: center;
+   position: relative;
 
-   ${({ theme }) => {
-    console.log("${theme.breakpoints['md']", theme.breakpoints.md);
-    return css`
+   ${({theme}) => {
+      console.log("${theme.breakpoints['md']", theme.breakpoints.md);
+      return css`
          font-family: ${theme.fontFamily};
          font-weight: ${theme.fontWeights.regular};
          color: ${theme.colors.textColor};
@@ -88,41 +89,41 @@ const Wrapper = styled.div`
             }
          }
       `;
-  }}
+   }}
 
    > *:not(:last-child) {
       margin-right: 1rem;
    }
 `;
 
-export const Switch: React.FC<SwitchProps> = ({ isToggled, handleToggle, labels }) => {
-  const uniqueId = Math.random().toString(36);
+export const Switch: React.FC<SwitchProps> = ({isToggled, handleToggle, labels}) => {
+   const uniqueId = Math.random().toString(36);
 
-  return (
-    <Wrapper>
-      {labels && (
-      <Text type="span" size="sm">
-        {labels.left}
-      </Text>
-      )}
-      <CheckBoxWrapper>
-        <Input
-          checked={typeof isToggled === 'boolean' ? isToggled : undefined}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => handleToggle(event)}
-          id={uniqueId}
-          name={uniqueId}
-          type="checkbox"
-        />
+   return (
+      <Wrapper>
+         {labels && (
+            <Text type="span" size="sm">
+               {labels.left}
+            </Text>
+         )}
+         <CheckBoxWrapper>
+            <Input
+               checked={typeof isToggled === 'boolean' ? isToggled : undefined}
+               onChange={(event: ChangeEvent<HTMLInputElement>) => handleToggle(event)}
+               id={uniqueId}
+               name={uniqueId}
+               type="checkbox"
+            />
 
-        <CheckBoxLabel htmlFor={uniqueId} />
-      </CheckBoxWrapper>
-      {labels && (
-      <Text type="span" size="sm">
-        {labels.right}
-      </Text>
-      )}
-    </Wrapper>
-  );
+            <CheckBoxLabel htmlFor={uniqueId} />
+         </CheckBoxWrapper>
+         {labels && (
+            <Text type="span" size="sm">
+               {labels.right}
+            </Text>
+         )}
+      </Wrapper>
+   );
 };
 
 Switch.displayName = 'Switch';
