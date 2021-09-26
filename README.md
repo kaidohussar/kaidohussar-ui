@@ -1,4 +1,4 @@
-<h1>Set of UI components made by Kaido Hussar ⚡</h1>
+<h1>Set of UI components made by Kaido Hussar (WIP) ⚡</h1>
 
 ### Install the library
 ```bash
