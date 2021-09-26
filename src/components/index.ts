@@ -8,3 +8,4 @@ export * from './Icon';
 export * from './Box';
 export * from './NavHeader';
 export * from './Loading';
+export * from './ProgressBar';
