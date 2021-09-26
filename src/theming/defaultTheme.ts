@@ -50,6 +50,7 @@ const fontWeights = {
 };
 
 const uiSpeed = '0.2s';
+const uiSpeedLonger = '0.4s';
 const BASE = 4;
 
 export const breakpoints = {
@@ -107,6 +108,7 @@ const themeLight = {
    fontFamily: 'arponasans, sans-serif;',
 
    uiSpeed,
+   uiSpeedLonger,
 
    lineHeights,
    breakpoints,
@@ -136,6 +138,7 @@ const themeDark = {
    fontFamily: 'arponasans, sans-serif;',
 
    uiSpeed,
+   uiSpeedLonger,
 
    lineHeights,
    breakpoints,

@@ -49,4 +49,5 @@ export interface Theme {
    defaultBorderRadius: string;
 
    uiSpeed: string;
+   uiSpeedLonger: string;
 }

@@ -18,7 +18,12 @@ export interface ProgressBarProps {
    /**
     * Hide progress bar
     */
-   hidden?: boolean;
+   isHidden?: boolean;
+
+   /**
+    * Bar height
+    */
+   barHeight?: number;
 }
 
 /**
@@ -26,17 +31,18 @@ export interface ProgressBarProps {
  */
 
 const StyledProgressBar = styled.div<Omit<ProgressBarProps, 'percentage'>>`
-   ${({theme, colors, hidden}) => {
-      const barHeight = 4;
+   ${({theme, colors, isHidden, barHeight}) => {
+      const height = barHeight || 4;
 
       return css`
          background: ${colors && colors.bar ? colors.bar : theme.colors.grey100};
          width: 100%;
          position: fixed;
-         top: ${hidden ? barHeight * -1 + 'px' : 0};
+         top: 0;
          left: 0;
-         height: ${barHeight}px;
-         transition: all 1s;
+         height: ${height}px;
+         transform: ${isHidden ? `translateY(-40px)` : `translateY(0px)`};
+         transition: all ${theme.uiSpeedLonger};
       `;
    }};
 `;
@@ -52,8 +58,8 @@ const StyledProgress = styled.div<ProgressBarProps>`
    }};
 `;
 
-export const ProgressBar: React.FC<ProgressBarProps> = ({percentage, colors, hidden}) => (
-   <StyledProgressBar colors={colors} hidden={hidden}>
+export const ProgressBar: React.FC<ProgressBarProps> = ({percentage, colors, isHidden, barHeight}) => (
+   <StyledProgressBar colors={colors} isHidden={isHidden} barHeight={barHeight}>
       <StyledProgress percentage={percentage} colors={colors} />
    </StyledProgressBar>
 );
