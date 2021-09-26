@@ -81,11 +81,10 @@ export const deviceBreakpoints: {[key in SpacingOptions]: string} = {
 };
 
 const greyColors = {
-   grey100: 'grey',
-   grey200: 'grey',
-   grey300: 'grey',
-   grey400: 'grey',
-   grey500: 'grey',
+   grey100: '#ECEDEE',
+   grey200: '#D4D7DB',
+   grey300: '#BEC1C8',
+   grey400: '#515B6C',
 };
 
 const themeLight = {

@@ -13,9 +13,9 @@ export type ColorOptions =
    | 'textColorLightBg'
    | 'textColor'
    | 'grey100'
+   | 'grey200'
    | 'grey300'
    | 'grey400'
-   | 'grey500'
    | 'dangerColor'
    | 'linkColor'
    | 'linkFocusedColor';
