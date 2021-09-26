@@ -78,7 +78,6 @@ const Wrapper = styled.div`
    position: relative;
 
    ${({theme}) => {
-      console.log("${theme.breakpoints['md']", theme.breakpoints.md);
       return css`
          font-family: ${theme.fontFamily};
          font-weight: ${theme.fontWeights.regular};
