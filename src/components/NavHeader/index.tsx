@@ -1,8 +1,8 @@
-import React, { ChangeEvent } from 'react';
-import { styled } from 'theming';
-import { css } from 'theming/defaultTheme';
+import React, {ChangeEvent} from 'react';
+import {styled} from 'theming';
+import {css} from 'theming/defaultTheme';
 
-import { Button } from 'components/Button';
+import {Button} from 'components/Button';
 
 interface NavItem {
    title: string;
@@ -29,49 +29,50 @@ export interface NavHeaderProps {
  * Navigation header to display at the top of the page
  */
 
-const StyledNavHeader = styled.div<Pick<NavHeaderProps, 'alignment' | 'addOn'>>`
+const StyledNavHeader = styled.nav<Pick<NavHeaderProps, 'alignment' | 'addOn'>>`
    display: flex;
 
-   ${({ theme }) => css`
-         padding: ${theme.spacing.lg} 0;
-      `}
-   ${({ alignment }) => css`
-         justify-content: ${alignment === 'right' ? 'flex-end' : 'flex-start'};
-      `}
+   ${({theme}) => css`
+      padding: ${theme.spacing.lg} 0;
+   `}
+   ${({alignment}) => css`
+      justify-content: ${alignment === 'right' ? 'flex-end' : 'flex-start'};
+   `}
 
-   ${({ addOn, alignment }) => {
-    if (addOn) {
-      return css`
+   ${({addOn, alignment}) => {
+      if (addOn) {
+         return css`
             justify-content: space-between;
             flex-direction: ${alignment === 'right' ? 'row-reverse' : 'row'};
          `;
-    }
-  }}
+      }
+   }}
 `;
 
 const StyledNavItems = styled.div<Pick<NavHeaderProps, 'alignment'>>`
    display: flex;
-   font-weight: ${({ theme }) => theme.fontWeights.light};
+   font-weight: ${({theme}) => theme.fontWeights.light};
 
-   ${({ alignment, theme }) => {
-    if (alignment === 'right') {
-      return css`
+   ${({alignment, theme}) => {
+      if (alignment === 'right') {
+         return css`
             button {
                margin-left: ${theme.spacing.lg};
             }
          `;
-    }
-    return css`
-            button {
-               margin-right: ${theme.spacing.lg};
-            }
-         `;
-  }}
+      }
+      return css`
+         button {
+            margin-right: ${theme.spacing.lg};
+         }
+      `;
+   }}
 `;
 
 const StyledNavItem = styled.div<{active?: boolean}>`
-   ${({ theme, active }) => active
-      && css`
+   ${({theme, active}) =>
+      active &&
+      css`
          font-weight: ${theme.fontWeights.semibold};
 
          button {
@@ -99,25 +100,25 @@ const StyledAddon = styled.div`
    align-items: center;
 `;
 
-export const NavHeader: React.FC<NavHeaderProps> = ({ alignment = 'right', navItems, addOn }) => (
-  <StyledNavHeader alignment={alignment} addOn={addOn}>
-    <StyledNavItems alignment={alignment}>
-      {navItems.map((item, index) => (
-        <StyledNavItem key={index} active={item.active}>
-          <Button
-            onClick={(e) => {
-              item.onClick(e);
-            }}
-            size="large"
-            appearance="text"
-          >
-            {item.title}
-          </Button>
-        </StyledNavItem>
-      ))}
-    </StyledNavItems>
-    {addOn && <StyledAddon>{addOn}</StyledAddon>}
-  </StyledNavHeader>
+export const NavHeader: React.FC<NavHeaderProps> = ({alignment = 'right', navItems, addOn}) => (
+   <StyledNavHeader alignment={alignment} addOn={addOn}>
+      <StyledNavItems alignment={alignment}>
+         {navItems.map((item, index) => (
+            <StyledNavItem key={index} active={item.active}>
+               <Button
+                  onClick={(e) => {
+                     item.onClick(e);
+                  }}
+                  size="large"
+                  appearance="text"
+               >
+                  {item.title}
+               </Button>
+            </StyledNavItem>
+         ))}
+      </StyledNavItems>
+      {addOn && <StyledAddon>{addOn}</StyledAddon>}
+   </StyledNavHeader>
 );
 
 NavHeader.displayName = 'NavHeader';
